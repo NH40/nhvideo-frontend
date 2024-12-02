@@ -1,3 +1,5 @@
+import { usePathname } from 'next/navigation'
+import { match } from 'path-to-regexp'
 import type { FC } from 'react'
 
 import type { ISidebarItem } from '../sidebar.types'
@@ -10,6 +12,7 @@ interface Props {
 }
 
 export const SidebarMenu: FC<Props> = ({ menu, title }) => {
+  const pathname = usePathname()
   return (
     <nav>
       {title && (
@@ -20,6 +23,7 @@ export const SidebarMenu: FC<Props> = ({ menu, title }) => {
           <MenuItem
             item={item}
             key={item.label}
+            isActive={!!match(item.path)(pathname)}
           />
         ))}
       </ul>

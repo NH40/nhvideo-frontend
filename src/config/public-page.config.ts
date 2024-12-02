@@ -1,17 +1,25 @@
 class PUBLIC_PAGE_CONFIG {
-  HOME_PAGE = '/'
-  TRENDING_PAGE = '/trending'
-  VIDEO_GAMES_PAGE = '/video-games'
+  HOME = '/'
+  TRENDING = '/trending'
+  VIDEO_GAMES = '/video-games'
 
-  SEARCH_PAGE = '/search'
+  SEARCH = '/search'
 
-  MY_CHANNEL_PAGE = '/my-channel'
-  SUBSCRIPTIONS_PAGE = '/subscriptions'
-  HISTORY_PAGE = '/history'
-  LIKED_VIDEOS_PAGE = '/liked-videos'
+  MY_CHANNEL = '/my-channel'
+  SUBSCRIPTIONS = '/subscriptions'
+  HISTORY = '/history'
+  LIKED_VIDEOS = '/liked-videos'
 
-  SETTINGS_PAGE = '/settings'
-  FEEDBACK_PAGE = '/feedback'
+  SETTINGS = '/settings'
+  FEEDBACK = '/feedback'
+
+  VIDEO(path: string) {
+    return `/v/${path}`
+  }
+
+  CHANNEL(path: string) {
+    return `/c/${path}`
+  }
 }
 
-export const PUBLIC_PAGE = new PUBLIC_PAGE_CONFIG()
+export const PAGE = new PUBLIC_PAGE_CONFIG()

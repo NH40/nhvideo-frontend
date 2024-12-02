@@ -10,7 +10,7 @@ import {
   TvMinimalPlay
 } from 'lucide-react'
 
-import { PUBLIC_PAGE } from '@/config/public-page.config'
+import { PAGE } from '@/config/public-page.config'
 
 import type { ISidebarItem } from './sidebar.types'
 
@@ -18,38 +18,38 @@ export const SIDEBAR_DATA: ISidebarItem[] = [
   {
     icon: Compass,
     label: 'Главная',
-    path: PUBLIC_PAGE.HOME_PAGE
+    path: PAGE.HOME
   },
   {
     icon: Flame,
     label: 'Тренды',
-    path: PUBLIC_PAGE.TRENDING_PAGE
+    path: PAGE.TRENDING
   },
   {
     icon: Gamepad2,
     label: 'Видео игры',
-    path: PUBLIC_PAGE.VIDEO_GAMES_PAGE,
+    path: PAGE.VIDEO_GAMES,
     isBottomBorder: true
   },
   {
     icon: TvMinimalPlay,
     label: 'Мои каналы',
-    path: PUBLIC_PAGE.MY_CHANNEL_PAGE
+    path: PAGE.MY_CHANNEL
   },
   {
     icon: CirclePlay,
     label: 'Подписки',
-    path: PUBLIC_PAGE.SUBSCRIPTIONS_PAGE
+    path: PAGE.SUBSCRIPTIONS
   },
   {
     icon: History,
     label: 'История',
-    path: PUBLIC_PAGE.HISTORY_PAGE
+    path: PAGE.HISTORY
   },
   {
     icon: FolderHeart,
     label: 'Понравившиеся',
-    path: PUBLIC_PAGE.LIKED_VIDEOS_PAGE,
+    path: PAGE.LIKED_VIDEOS,
     isBottomBorder: true
   }
 ]
@@ -58,11 +58,11 @@ export const MORE_SIDEBAR_DATA: ISidebarItem[] = [
   {
     icon: Settings,
     label: 'Настройки',
-    path: PUBLIC_PAGE.SETTINGS_PAGE
+    path: PAGE.SETTINGS
   },
   {
     icon: CircleAlert,
     label: 'Отзывы',
-    path: PUBLIC_PAGE.FEEDBACK_PAGE
+    path: PAGE.FEEDBACK
   }
 ]

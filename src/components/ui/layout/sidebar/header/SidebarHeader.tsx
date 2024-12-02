@@ -4,7 +4,7 @@ import type { FC } from 'react'
 
 import { COLORS } from '@/constants/color.constants'
 
-import { PUBLIC_PAGE } from '@/config/public-page.config'
+import { PAGE } from '@/config/public-page.config'
 
 interface Props {
   toggleSidebar: () => void
@@ -20,7 +20,7 @@ export const SidebarHeader: FC<Props> = ({ toggleSidebar }) => {
         <Menu />
       </button>
       <Link
-        href={PUBLIC_PAGE.HOME_PAGE}
+        href={PAGE.HOME}
         className='flex items-center gap-1.5'
       >
         <Youtube
