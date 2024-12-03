@@ -1,7 +1,6 @@
 import { BadgeCheck, type LucideIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import type { FC } from 'react'
 
 import type { IVideo } from '@/types/video.types'
 
@@ -15,42 +14,62 @@ interface Props {
   Icon?: LucideIcon
 }
 
-export const VideoItem: FC<Props> = ({ video, Icon }) => {
+export function VideoItem({ video, Icon }: Props) {
   return (
     <div>
-      <div>
-        <Link href={PAGE.VIDEO(video.slug)}>
+      <div className='relative mb-1.5'>
+        <Link href={PAGE.VIDEO(video.id)}>
           <Image
             src={video.thumbnailUrl}
             width={250}
             height={140}
-            alt={video.title || ''}
+            alt={video.title || 'Thumbnail of the video'}
+            className='rounded-md'
           />
         </Link>
-        <Link href={PAGE.VIDEO(video.channel.slug)}>
+        <Link
+          href={PAGE.CHANNEL(video.channel.slug)}
+          className='absolute left-1.5 bottom-2'
+        >
           <Image
             src={video.channel.avatarUrl}
-            width={30}
-            height={30}
-            alt={video.channel.name || ''}
+            width={35}
+            height={35}
+            alt={video.channel.name || 'Avatar of the channel'}
+            className='rounded-full shadow'
           />
         </Link>
       </div>
-      <div>
-        <div>
-          {Icon && <Icon />}
-          <span>{transformViews(video.viewsCount)}</span>
+      <div className='mb-1.5 flex items-center justify-between'>
+        <div className='flex items-center gap-0.5'>
+          {Icon && (
+            <Icon
+              className='text-red-600'
+              size={20}
+            />
+          )}
+          <span className='text-gray-400 text-sm'>
+            {transformViews(video.viewsCount)}
+          </span>
         </div>
         <div>
-          <span>{transformDate(video.createAt)}</span>
+          <span className='text-gray-400 text-xs'>{transformDate(video.createdAt)}</span>
         </div>
       </div>
-      <div>
-        <Link href={PAGE.VIDEO(video.slug)}>{video.title}</Link>
+      <div className='mb-1'>
+        <Link
+          href={PAGE.VIDEO(video.id)}
+          className='line-clamp-2 leading-[1.3]'
+        >
+          {video.title}
+        </Link>
       </div>
       <div>
-        <Link href={PAGE.CHANNEL(video.channel.slug)}>
-          <span className='text-gray-400 text-sm'>{video.channel.name}</span>
+        <Link
+          href={PAGE.CHANNEL(video.channel.slug)}
+          className='flex items-center gap-1'
+        >
+          <span className='text-gray-400 text-sm'>{video.channel.user.name}</span>
           <span>
             <BadgeCheck
               className='text-green-500'
