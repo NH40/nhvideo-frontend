@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: PAGE.TRENDING,
-    title: 'Trending'
+    title: 'Тренды'
   }
 }
 

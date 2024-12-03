@@ -24,7 +24,7 @@ export function SidebarHeader({ toggleSidebar }: { toggleSidebar: () => void }) 
           color={COLORS.primary}
           size={29}
         />
-        <span className='font-medium text-xl'>{SITE_NAME}</span>
+        <span className=' text-xl font-semibold'>{SITE_NAME}</span>
       </Link>
     </div>
   )
