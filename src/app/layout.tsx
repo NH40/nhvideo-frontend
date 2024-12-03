@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Noto_Sans } from 'next/font/google'
 
-import { MainLayout } from '@/ui/layout/MainLayout'
+import { MainLayout } from '@/components/layout/MainLayout'
 
 import { Providers } from '@/providers/Providers'
 
