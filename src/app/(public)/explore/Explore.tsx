@@ -25,7 +25,7 @@ export const Explore: FC = () => {
       <div className='grid grid-cols-6 gap-3'>
         {isLoading ? (
           <SkeletonLoader
-            count={5}
+            count={6}
             className='h-36 rounded-md'
           />
         ) : (
