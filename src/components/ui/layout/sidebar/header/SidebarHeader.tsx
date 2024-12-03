@@ -12,7 +12,7 @@ interface Props {
 
 export const SidebarHeader: FC<Props> = ({ toggleSidebar }) => {
   return (
-    <div className='flex items-center gap-6 mb-12	'>
+    <div className='flex items-center gap-4 mb-12	'>
       <button
         className='opacity-85 hover:opacity-100 transition-opacity'
         onClick={toggleSidebar}

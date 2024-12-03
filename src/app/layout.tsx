@@ -5,12 +5,17 @@ import { MainLayout } from '@/ui/layout/MainLayout'
 
 import { Providers } from '@/providers/Providers'
 
+import { SITE_NAME } from '@/constants/seo.constants'
+
 import './globals.scss'
 
 const notoSans = Noto_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'NH Video',
+  title: {
+    absolute: SITE_NAME,
+    template: `%s | ${SITE_NAME}`
+  },
   icons: {
     icon: '/logo 2.png'
   },
