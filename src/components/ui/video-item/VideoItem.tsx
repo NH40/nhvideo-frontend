@@ -23,7 +23,7 @@ export function VideoItem({ video, Icon }: Props) {
             src={video.thumbnailUrl}
             width={250}
             height={140}
-            alt={video.title || 'Thumbnail of the video'}
+            alt={video.title}
             className='rounded-md'
           />
         </Link>
@@ -35,7 +35,7 @@ export function VideoItem({ video, Icon }: Props) {
             src={video.channel.avatarUrl}
             width={35}
             height={35}
-            alt={video.channel.name || 'Avatar of the channel'}
+            alt={video.channel.user.name}
             className='rounded-full shadow'
           />
         </Link>

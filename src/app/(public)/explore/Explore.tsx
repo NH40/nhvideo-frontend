@@ -22,10 +22,10 @@ export const Explore: FC = () => {
   return (
     <section>
       <Heading Icon={Compass}>Рекомендации</Heading>
-      <div className='max-w-screen-2xl grid grid-cols-6 gap-6'>
+      <div className='grid grid-cols-6 gap-3'>
         {isLoading ? (
           <SkeletonLoader
-            count={6}
+            count={5}
             className='h-36 rounded-md'
           />
         ) : (

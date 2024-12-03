@@ -4,12 +4,12 @@ import cn from 'clsx'
 import { type PropsWithChildren, useState } from 'react'
 
 import { Content } from './content/Content'
-import Sidebar from './sidebar/Sidebar'
+import { Sidebar } from './sidebar/Sidebar'
 
-import styles from './MainLayout.module.scss'
+import styles from './Layout.module.scss'
 
 export function MainLayout({ children }: PropsWithChildren<unknown>) {
-  const [isShowedSidebar, setIsShowedSidebar] = useState<boolean>(true)
+  const [isShowedSidebar, setIsShowedSidebar] = useState(true)
 
   const toggleSidebar = () => {
     setIsShowedSidebar(!isShowedSidebar)
@@ -19,11 +19,12 @@ export function MainLayout({ children }: PropsWithChildren<unknown>) {
     <main
       className={cn(
         'flex min-h-screen',
+        styles.initialSidebar,
         isShowedSidebar ? styles.showedSidebar : styles.hidedSidebar
       )}
     >
       <Sidebar toggleSidebar={toggleSidebar} />
-      <Content> {children}</Content>
+      <Content>{children}</Content>
     </main>
   )
 }

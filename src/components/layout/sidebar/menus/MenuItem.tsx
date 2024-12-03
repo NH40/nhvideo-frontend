@@ -1,6 +1,5 @@
 import cn from 'clsx'
 import Link from 'next/link'
-import type { FC } from 'react'
 
 import type { ISidebarItem } from '../sidebar.types'
 
@@ -9,11 +8,11 @@ interface Props {
   isActive: boolean
 }
 
-export const MenuItem: FC<Props> = ({ item, isActive }) => {
+export function MenuItem({ item, isActive }: Props) {
   return (
     <li>
       <Link
-        href={item.path}
+        href={item.link}
         className={'group py-3 flex items-center gap-5'}
       >
         <item.icon

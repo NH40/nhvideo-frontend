@@ -1,10 +1,10 @@
 import type { IChannel } from './channel.types'
 
 export interface IUser {
-  id: String
-  name: String
-  email: String
-  password: String
+  id: string
+  name: string
+  email: string
+  password: string
   channel?: IChannel
   subscriptions: IChannel[]
   createdAt: Date

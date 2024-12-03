@@ -18,38 +18,38 @@ export const SIDEBAR_DATA: ISidebarItem[] = [
   {
     icon: Compass,
     label: 'Главная',
-    path: PAGE.HOME
+    link: PAGE.HOME
   },
   {
     icon: Flame,
     label: 'Тренды',
-    path: PAGE.TRENDING
+    link: PAGE.TRENDING
   },
   {
     icon: Gamepad2,
     label: 'Видео игры',
-    path: PAGE.VIDEO_GAMES,
+    link: PAGE.VIDEO_GAMES,
     isBottomBorder: true
   },
   {
     icon: TvMinimalPlay,
-    label: 'Мои каналы',
-    path: PAGE.MY_CHANNEL
+    label: 'Мой канал',
+    link: PAGE.MY_CHANNEL
   },
   {
     icon: CirclePlay,
     label: 'Подписки',
-    path: PAGE.SUBSCRIPTIONS
+    link: PAGE.SUBSCRIPTIONS
   },
   {
     icon: History,
     label: 'История',
-    path: PAGE.HISTORY
+    link: PAGE.HISTORY
   },
   {
     icon: FolderHeart,
     label: 'Понравившиеся',
-    path: PAGE.LIKED_VIDEOS,
+    link: PAGE.LIKED_VIDEOS,
     isBottomBorder: true
   }
 ]
@@ -58,11 +58,11 @@ export const MORE_SIDEBAR_DATA: ISidebarItem[] = [
   {
     icon: Settings,
     label: 'Настройки',
-    path: PAGE.SETTINGS
+    link: PAGE.SETTINGS
   },
   {
     icon: CircleAlert,
-    label: 'Отзывы',
-    path: PAGE.FEEDBACK
+    label: 'Обратная связь',
+    link: PAGE.FEEDBACK
   }
 ]
