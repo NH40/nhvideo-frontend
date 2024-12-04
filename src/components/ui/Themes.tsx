@@ -2,10 +2,15 @@ import { Palette } from 'lucide-react'
 import { type FC, useEffect, useState } from 'react'
 
 export const Themes: FC = () => {
-  const [isDarkTheme, setIsDarkTheme] = useState(() => {
+  const [isDarkTheme, setIsDarkTheme] = useState(true)
+
+  useEffect(() => {
+    // Initialize theme from localStorage on client side
     const savedTheme = localStorage.getItem('theme')
-    return savedTheme ? savedTheme === 'dark' : true
-  })
+    if (savedTheme) {
+      setIsDarkTheme(savedTheme === 'dark')
+    }
+  }, [])
 
   useEffect(() => {
     const root = document.documentElement
