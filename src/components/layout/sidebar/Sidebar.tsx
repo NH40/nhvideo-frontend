@@ -12,6 +12,7 @@ export function Sidebar({ toggleSidebar }: { toggleSidebar: () => void }) {
       <SidebarMenu
         title='Узнать больше о NH Video'
         menu={MORE_SIDEBAR_DATA}
+        isTheme
       />
     </aside>
   )
