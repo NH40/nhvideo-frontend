@@ -10,3 +10,10 @@ html,
 body {
   @apply text-white bg-bg text-base;
 }
+
+:root.light-theme {
+  html,
+  body {
+    @apply text-white bg-new text-base;
+  }
+}
