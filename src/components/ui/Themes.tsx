@@ -1,7 +1,8 @@
-import { Laptop, Moon, Sun } from 'lucide-react'
 import { type FC, useEffect, useState } from 'react'
 
-type ThemeType = 'dark' | 'light' | 'new'
+import { THEMES } from '@/constants/theme.constants'
+
+import type { ThemeType } from '@/types/theme.types'
 
 export const Themes: FC = () => {
   const [theme, setTheme] = useState<ThemeType>('dark')
@@ -22,15 +23,9 @@ export const Themes: FC = () => {
     localStorage.setItem('theme', theme)
   }, [theme])
 
-  const themes = [
-    { name: 'dark', icon: Moon },
-    { name: 'light', icon: Sun },
-    { name: 'new', icon: Laptop }
-  ]
-
   return (
     <div className='flex items-center gap-2 p-layout bg-bg rounded-lg transition-colors duration-300 ml-6'>
-      {themes.map(({ name, icon: Icon }) => (
+      {THEMES.map(({ name, icon: Icon }) => (
         <button
           key={name}
           onClick={() => setTheme(name as ThemeType)}
