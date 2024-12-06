@@ -8,12 +8,31 @@
 
 html,
 body {
-  @apply text-white bg-bg text-base;
+  @apply bg-bg text-white transition-colors duration-[333ms] ease-in-out;
 }
 
 :root.light-theme {
   html,
   body {
-    @apply text-white bg-new text-base;
+    @apply bg-[#f0f0f0] text-[#1a1a1a];
   }
+
+  .bg-bg {
+    @apply bg-[#f0f0f0];
+  }
+}
+
+:root.new-theme {
+  html,
+  body {
+    @apply bg-new text-white;
+  }
+
+  .bg-bg {
+    @apply bg-new;
+  }
+}
+
+.transition-theme {
+  @apply transition-all duration-[333ms] ease-in-out;
 }

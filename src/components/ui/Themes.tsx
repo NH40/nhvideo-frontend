@@ -1,36 +1,49 @@
-import { Palette } from 'lucide-react'
+import { Laptop, Moon, Sun } from 'lucide-react'
 import { type FC, useEffect, useState } from 'react'
 
+type ThemeType = 'dark' | 'light' | 'new'
+
 export const Themes: FC = () => {
-  const [isDarkTheme, setIsDarkTheme] = useState(true)
+  const [theme, setTheme] = useState<ThemeType>('dark')
 
   useEffect(() => {
-    // Initialize theme from localStorage on client side
-    const savedTheme = localStorage.getItem('theme')
+    const savedTheme = localStorage.getItem('theme') as ThemeType
     if (savedTheme) {
-      setIsDarkTheme(savedTheme === 'dark')
+      setTheme(savedTheme)
     }
   }, [])
 
   useEffect(() => {
     const root = document.documentElement
-    root.classList.toggle('light-theme', !isDarkTheme)
-    localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light')
-  }, [isDarkTheme])
+    root.classList.remove('light-theme', 'new-theme')
+    if (theme !== 'dark') {
+      root.classList.add(`${theme}-theme`)
+    }
+    localStorage.setItem('theme', theme)
+  }, [theme])
 
-  const toggleTheme = () => {
-    setIsDarkTheme(prev => !prev)
-  }
+  const themes = [
+    { name: 'dark', icon: Moon },
+    { name: 'light', icon: Sun },
+    { name: 'new', icon: Laptop }
+  ]
 
   return (
-    <li>
-      <button
-        onClick={toggleTheme}
-        className='group py-3 flex items-center gap-5'
-      >
-        <Palette className='min-w-6 group-hover:text-primary transition group-hover:rotate-6' />
-        <span>Тема</span>
-      </button>
-    </li>
+    <div className='flex items-center gap-2 p-layout bg-bg rounded-lg transition-colors duration-300 ml-6'>
+      {themes.map(({ name, icon: Icon }) => (
+        <button
+          key={name}
+          onClick={() => setTheme(name as ThemeType)}
+          className={`p-2 rounded-md transition-colors duration-300 ${
+            theme === name
+              ? 'bg-primary text-white'
+              : 'hover:bg-primary/90 hover:text-white'
+          }`}
+          title={`${name.charAt(0).toUpperCase() + name.slice(1)} theme`}
+        >
+          <Icon size={20} />
+        </button>
+      ))}
+    </div>
   )
 }
