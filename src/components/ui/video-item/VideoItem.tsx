@@ -70,12 +70,14 @@ export function VideoItem({ video, Icon }: Props) {
           className='flex items-center gap-1'
         >
           <span className='text-gray-400 text-sm'>{video.channel.user.name}</span>
-          <span>
-            <BadgeCheck
-              className='text-green-500'
-              size={15}
-            />
-          </span>
+          {video.channel.isVerified && (
+            <span>
+              <BadgeCheck
+                className='text-green-500'
+                size={15}
+              />
+            </span>
+          )}
         </Link>
       </div>
     </div>

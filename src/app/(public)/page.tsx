@@ -31,8 +31,8 @@ export default async function HomePage() {
     <section>
       <section className='mb-10'>
         <Heading Icon={Flame}>Тренды</Heading>
-        <div className='max-w-screen-2xl grid grid-cols-6 gap-3'>
-          {trendingVideos.length &&
+        <div className='max-w-screen-2xl grid-6-cols'>
+          {!!trendingVideos.length &&
             trendingVideos.map(video => (
               <VideoItem
                 key={video.id}

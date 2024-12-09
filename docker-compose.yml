@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
+      - SERVER_URL=http://localhost:4200
+      - API_URL=http://localhost:4200/api
+      - GOOGLE_RECAPTCHA_SITE_KEY=
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    restart: always

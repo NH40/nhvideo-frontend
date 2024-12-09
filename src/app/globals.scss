@@ -47,6 +47,6 @@ body {
 
 @layer utilities {
   .grid-6-cols {
-    @apply grid grid-cols-6 gap-6;
+    @apply grid grid-cols-6 gap-3;
   }
 }

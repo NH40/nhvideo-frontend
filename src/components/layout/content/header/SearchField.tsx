@@ -1,21 +1,9 @@
-import { useRouter } from 'next/navigation'
-import { type KeyboardEvent, useState } from 'react'
-
-import { PAGE } from '@/config/public-page.config'
+import { useSearch } from '@/hooks/useSearch'
 
 interface Props {}
 
 export function SearchField({}: Props) {
-  const [searchTerm, setSearchTerm] = useState('')
-  const router = useRouter()
-
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key !== 'Enter') return
-    e.preventDefault()
-    if (searchTerm.trim() !== '') {
-      router.push(PAGE.SEARCH(searchTerm))
-    }
-  }
+  const { searchTerm, setSearchTerm, handleKeyDown } = useSearch()
 
   return (
     <div className='w-3/12'>

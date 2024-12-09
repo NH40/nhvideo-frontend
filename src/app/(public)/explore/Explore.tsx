@@ -17,7 +17,7 @@ export const Explore: FC = () => {
   })
 
   //@ts-ignore
-  const videos = data?.data?.videos || []
+  const videos = data?.data?.videos ? data.data.videos : []
 
   return (
     <section>
