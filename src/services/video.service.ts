@@ -1,16 +1,33 @@
-import axios from 'axios'
-
 import type { IVideo } from '@/types/video.types'
 
-import { VIDEO_CONFIG } from '@/config/api-video-service.config'
+import { axiosClassic } from '@/api/axios'
 
 class VideoService {
+  private _VIDEOS = '/videos'
+
+  getAll(searchTerm?: string | null) {
+    return axiosClassic.get<IVideo[]>(
+      this._VIDEOS,
+      searchTerm
+        ? {
+            params: {
+              searchTerm
+            }
+          }
+        : {}
+    )
+  }
+
+  getVideoGames() {
+    return axiosClassic.get<IVideo[]>(`${this._VIDEOS}/games`)
+  }
+
   getTrendingVideos() {
-    return axios.get<IVideo[]>(VIDEO_CONFIG.VIDEO_TRENDING)
+    return axiosClassic.get<IVideo[]>(`${this._VIDEOS}/trending`)
   }
 
   getExploreVideos() {
-    return axios.get<IVideo[]>(VIDEO_CONFIG.VIDEO_EXPLORE)
+    return axiosClassic.get<IVideo[]>(`${this._VIDEOS}/explore`)
   }
 }
 

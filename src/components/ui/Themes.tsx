@@ -24,7 +24,7 @@ export const Themes: FC = () => {
   }, [theme])
 
   return (
-    <div className='flex items-center gap-2 p-layout bg-bg rounded-lg transition-colors duration-300 ml-6'>
+    <div className='flex items-center gap-2 p-layout bg-bg rounded-lg transition-colors duration-300 ml-4'>
       {THEMES.map(({ name, icon: Icon }) => (
         <button
           key={name}

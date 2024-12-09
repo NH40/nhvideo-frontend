@@ -20,6 +20,14 @@ body {
   .bg-bg {
     @apply bg-[#f0f0f0];
   }
+
+  .border-border {
+    @apply border-border_light;
+  }
+
+  .bg-border {
+    @apply bg-border_light;
+  }
 }
 
 :root.new-theme {
@@ -35,4 +43,10 @@ body {
 
 .transition-theme {
   @apply transition-all duration-[333ms] ease-in-out;
+}
+
+@layer utilities {
+  .grid-6-cols {
+    @apply grid grid-cols-6 gap-6;
+  }
 }

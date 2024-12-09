@@ -29,7 +29,7 @@ export function MenuItem({ item, isActive }: Props) {
           {item.label}
         </span>
       </Link>
-      {item.isBottomBorder && <span className='h-[1px] bg-border my-5 w-full block' />}
+      {item.isBottomBorder && <span className='h-[0.5px] bg-border my-5 w-full block' />}
     </li>
   )
 }
