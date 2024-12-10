@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.4.0",
     "@tanstack/react-query": "^5.59.8",
     "axios": "^1.7.8",
     "clsx": "^2.1.1",
@@ -18,11 +19,12 @@
     "lucide-react": "^0.462.0",
     "next": "15.0.3",
     "path-to-regexp": "^8.2.0",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "react-google-recaptcha": "^3.1.0",
     "react-hook-form": "^7.54.0",
     "react-hot-toast": "^2.4.1",
+    "react-redux": "^9.1.2",
     "sass": "1.77.6",
     "sass-loader": "^16.0.3",
     "tailwind-merge": "^2.5.5"

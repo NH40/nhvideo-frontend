@@ -24,32 +24,38 @@ export function useAuthForm(type: 'login' | 'register', reset: UseFormReset<IAut
       authService.main(type, data, recaptchaRef.current?.getValue())
   })
 
-  const onSubmit: SubmitHandler<IAuthForm> = data => {
+  const onSubmit: SubmitHandler<IAuthForm> = ({ email, password }) => {
     const token = recaptchaRef.current?.getValue()
 
     if (!token) {
-      toast.error('Pass the captcha!', {
+      toast.error('Введите recaptcha!', {
         id: 'recaptcha'
       })
       return
     }
 
-    toast.promise(mutateAsync(data), {
-      loading: 'Loading...',
-      success: () => {
-        startTransition(() => {
-          reset()
-          router.push(PAGE.HOME)
-        })
+    toast.promise(
+      mutateAsync({
+        email,
+        password
+      }),
+      {
+        loading: 'Загрузка...',
+        success: () => {
+          startTransition(() => {
+            reset()
+            router.push(PAGE.HOME)
+          })
 
-        return 'Success login!'
-      },
-      error: e => {
-        if (axios.isAxiosError(e)) {
-          return e.response?.data?.message
+          return 'Успешный вход!'
+        },
+        error: e => {
+          if (axios.isAxiosError(e)) {
+            return e.response?.data?.message
+          }
         }
       }
-    })
+    )
   }
 
   const isLoading = isPending || isAuthPending

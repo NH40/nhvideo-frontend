@@ -1,25 +1,31 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import type { FC } from 'react'
+import { LogIn } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
-import { STUDIO_PAGE } from '@/config/studio-page'
+import { SkeletonLoader } from '@/ui/SkeletonLoader'
+import { LinkButton } from '@/ui/button/LinkButton'
 
-interface Props {}
+import { PAGE } from '@/config/public-page.config'
 
-export const HeaderProfile: FC<Props> = ({}) => {
-  return (
-    <Link
-      href={STUDIO_PAGE.SETTINGS}
-      className='shrink-0'
-    >
-      {/* TODO: AUTH AVATAR */}
-      <Image
-        src='/uploads/avatars/nhauth.png'
-        alt=''
-        width={40}
-        height={40}
-        className='rounded-lg'
-      />
-    </Link>
+import { HeaderAvatar } from './HeaderAvatar'
+import { useTypedSelector } from '@/store'
+
+export function HeaderProfile() {
+  const [mounted, setMounted] = useState(false)
+  const { isLoggedIn } = useTypedSelector(state => state.auth)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return <SkeletonLoader className='w-10 mb-0 rounded-md' />
+  }
+
+  return isLoggedIn ? (
+    <HeaderAvatar />
+  ) : (
+    <LinkButton href={PAGE.AUTH}>
+      <LogIn size={20} /> Auth
+    </LinkButton>
   )
 }

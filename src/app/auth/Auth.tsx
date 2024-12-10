@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 
@@ -10,8 +11,11 @@ import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { Button } from '@/ui/button/Button'
 import { Field } from '@/ui/field/Field'
 
+import { PAGE } from '@/config/public-page.config'
+
 import type { IAuthForm } from './auth-form.types'
 import { useAuthForm } from './useAuthForm'
+import { useTypedSelector } from '@/store'
 
 import styles from './captcha.module.scss'
 
@@ -32,6 +36,14 @@ export function Auth() {
     isLogin ? 'login' : 'register',
     reset
   )
+
+  const accessToken = useTypedSelector(state => state.auth.accessToken)
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!accessToken) return
+    router.push(PAGE.HOME)
+  }, [accessToken, router])
 
   return (
     <div className='w-screen h-screen flex justify-center items-center  text-white transition-theme'>
@@ -73,7 +85,7 @@ export function Auth() {
               <Field
                 label='Email'
                 type='email'
-                registration={register('email', { required: 'Email is required!' })}
+                registration={register('email', { required: 'Email обязателен!' })}
                 error={errors.email?.message}
                 placeholder='Введите email:'
               />

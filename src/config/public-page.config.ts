@@ -1,4 +1,6 @@
 class PUBLIC_PAGE_CONFIG {
+  AUTH = '/auth'
+
   HOME = '/'
   TRENDING = '/trending'
   VIDEO_GAMES = '/video-games'
