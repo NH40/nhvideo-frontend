@@ -1,0 +1,12 @@
+.recaptcha {
+  filter: invert(1) grayscale(1);
+  transform: scale(0.88);
+
+  > div {
+    margin-left: -1.2rem;
+
+    > div {
+      @apply mx-auto;
+    }
+  }
+}

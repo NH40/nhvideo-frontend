@@ -11,7 +11,7 @@ services:
       - NODE_ENV=production
       - SERVER_URL=http://localhost:4200
       - API_URL=http://localhost:4200/api
-      - GOOGLE_RECAPTCHA_SITE_KEY=
+      - NEXT_PUBLIC_RECAPTCHA_SITE_KEY=
     volumes:
       - .:/app
       - /app/node_modules
