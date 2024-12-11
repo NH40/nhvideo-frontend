@@ -46,7 +46,7 @@ export function Auth() {
   }, [accessToken, router])
 
   return (
-    <div className='w-screen h-screen flex justify-center items-center  text-white transition-theme'>
+    <div className='w-screen h-screen flex justify-center items-center   transition-theme'>
       <div className='w-1/4 p-layout border-border border rounded  transition-theme'>
         <div className='text-center mb-1'>
           <Logo />

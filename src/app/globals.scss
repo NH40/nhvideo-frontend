@@ -14,13 +14,12 @@ body {
 :root.light-theme {
   html,
   body {
-    @apply bg-[#f0f0f0] text-[#1a1a1a];
+    @apply bg-[#fdfdfd] text-[#1a1a1a];
   }
 
   .bg-bg {
-    @apply bg-[#f0f0f0];
+    @apply bg-[#fdfdfd];
   }
-
   .border-border {
     @apply border-border_light;
   }

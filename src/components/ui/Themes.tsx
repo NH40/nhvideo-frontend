@@ -1,27 +1,10 @@
-import { type FC, useEffect, useState } from 'react'
-
+import { type FC } from 'react'
 import { THEMES } from '@/constants/theme.constants'
-
+import { useTheme } from '@/providers/ThemeProvider'
 import type { ThemeType } from '@/types/theme.types'
 
 export const Themes: FC = () => {
-  const [theme, setTheme] = useState<ThemeType>('dark')
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as ThemeType
-    if (savedTheme) {
-      setTheme(savedTheme)
-    }
-  }, [])
-
-  useEffect(() => {
-    const root = document.documentElement
-    root.classList.remove('light-theme', 'new-theme')
-    if (theme !== 'dark') {
-      root.classList.add(`${theme}-theme`)
-    }
-    localStorage.setItem('theme', theme)
-  }, [theme])
+  const { theme, setTheme } = useTheme()
 
   return (
     <div className='flex items-center gap-2 p-layout bg-bg rounded-lg transition-colors duration-300 ml-[1.5rem]'>

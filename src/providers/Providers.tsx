@@ -5,6 +5,7 @@ import { LazyMotion, domAnimation } from 'framer-motion'
 import { type ReactNode, useState } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { Provider } from 'react-redux'
+import { ThemeProvider } from './ThemeProvider'
 
 import { store } from '@/store'
 
@@ -12,13 +13,15 @@ export function Providers({ children }: { children: ReactNode }) {
   const [queryClient] = useState(() => new QueryClient())
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        <LazyMotion features={domAnimation}>
-          {children}
-          <Toaster />
-        </LazyMotion>
-      </Provider>
-    </QueryClientProvider>
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <LazyMotion features={domAnimation}>
+            {children}
+            <Toaster />
+          </LazyMotion>
+        </Provider>
+      </QueryClientProvider>
+    </ThemeProvider>
   )
 }
