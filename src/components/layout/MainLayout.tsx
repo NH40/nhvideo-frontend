@@ -1,19 +1,23 @@
 'use client'
 
 import cn from 'clsx'
-import { type PropsWithChildren, useState } from 'react'
+import { useAtom } from 'jotai'
+import { type PropsWithChildren, useEffect } from 'react'
+
+import { isShowedSidebarAtom } from '@/store/jotai.store'
 
 import { Content } from './content/Content'
 import { Sidebar } from './sidebar/Sidebar'
+import { authService } from '@/services/auth.service'
 
 import styles from './Layout.module.scss'
 
 export function MainLayout({ children }: PropsWithChildren<unknown>) {
-  const [isShowedSidebar, setIsShowedSidebar] = useState(true)
+  const [isShowedSidebar] = useAtom(isShowedSidebarAtom)
 
-  const toggleSidebar = () => {
-    setIsShowedSidebar(!isShowedSidebar)
-  }
+  useEffect(() => {
+    authService.initializeAuth()
+  }, [])
 
   return (
     <main
@@ -23,7 +27,7 @@ export function MainLayout({ children }: PropsWithChildren<unknown>) {
         isShowedSidebar ? styles.showedSidebar : styles.hidedSidebar
       )}
     >
-      <Sidebar toggleSidebar={toggleSidebar} />
+      <Sidebar />
       <Content>{children}</Content>
     </main>
   )

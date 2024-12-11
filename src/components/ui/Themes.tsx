@@ -1,13 +1,16 @@
 import { type FC } from 'react'
-import { THEMES } from '@/constants/theme.constants'
+
 import { useTheme } from '@/providers/ThemeProvider'
+
+import { THEMES } from '@/constants/theme.constants'
+
 import type { ThemeType } from '@/types/theme.types'
 
 export const Themes: FC = () => {
   const { theme, setTheme } = useTheme()
 
   return (
-    <div className='flex items-center gap-2 p-layout bg-bg rounded-lg transition-colors duration-300 ml-[1.5rem]'>
+    <div className='flex items-center gap-2 p-layout bg-bg rounded-lg transition-colors duration-300 ml-2'>
       {THEMES.map(({ name, icon: Icon }) => (
         <button
           key={name}

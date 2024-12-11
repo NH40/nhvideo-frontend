@@ -1,8 +1,6 @@
 import { usePathname } from 'next/navigation'
 import { match } from 'path-to-regexp'
 
-import { Themes } from '@/ui/Themes'
-
 import type { ISidebarItem } from '../sidebar.types'
 
 import { MenuItem } from './MenuItem'
@@ -29,7 +27,6 @@ export function SidebarMenu({ menu, title, isTheme }: Props) {
             isActive={!!match(menuItem.link)(pathname)}
           />
         ))}
-        {isTheme && <Themes />}
       </ul>
     </nav>
   )

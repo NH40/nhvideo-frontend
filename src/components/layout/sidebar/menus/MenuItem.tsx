@@ -1,5 +1,8 @@
 import cn from 'clsx'
+import { useAtom } from 'jotai'
 import Link from 'next/link'
+
+import { isShowedSidebarAtom } from '@/store/jotai.store'
 
 import type { ISidebarItem } from '../sidebar.types'
 
@@ -9,6 +12,7 @@ interface Props {
 }
 
 export function MenuItem({ item, isActive }: Props) {
+  const [isShowedSidebar] = useAtom(isShowedSidebarAtom)
   return (
     <li>
       <Link
@@ -17,7 +21,8 @@ export function MenuItem({ item, isActive }: Props) {
       >
         <item.icon
           className={cn('min-w-6', {
-            'group-hover:text-primary transition group-hover:rotate-6': !isActive
+            'group-hover:text-primary transition group-hover:rotate-6': !isActive,
+            'text-red-500': isActive && !isShowedSidebar
           })}
         />
         <span

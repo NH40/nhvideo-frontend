@@ -15,6 +15,8 @@
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
     "framer-motion": "^11.13.1",
+    "jose": "^5.9.6",
+    "jotai": "^2.10.3",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.462.0",
     "next": "15.0.3",
