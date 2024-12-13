@@ -33,14 +33,6 @@ export function Auth() {
     reset
   )
 
-  // const accessToken = useTypedSelector(state => state.auth.accessToken)
-  // const router = useRouter()
-
-  // useEffect(() => {
-  //   if (!accessToken) return
-  //   router.push(PAGE.HOME)
-  // }, [accessToken, router])
-
   return (
     <div className='w-screen h-screen flex justify-center items-center   transition-theme'>
       <div className='w-1/4 p-layout border-border border rounded  transition-theme'>

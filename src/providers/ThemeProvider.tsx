@@ -1,6 +1,7 @@
-import { createContext, useContext, useEffect, useState } from 'react'
-import type { ThemeType } from '@/types/theme.types'
 import type { PropsWithChildren } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
+
+import type { ThemeType } from '@/types/theme.types'
 
 type ThemeContextType = {
   theme: ThemeType
@@ -13,32 +14,40 @@ export function ThemeProvider({ children }: PropsWithChildren) {
   const [mounted, setMounted] = useState(false)
   const [theme, setTheme] = useState<ThemeType>('dark')
 
-  // Only run on client side
   useEffect(() => {
-    setMounted(true)
-    const savedTheme = localStorage.getItem('theme') as ThemeType
-    if (savedTheme) {
-      setTheme(savedTheme)
+    try {
+      const savedTheme = localStorage.getItem('theme')
+      if (savedTheme && (savedTheme === 'dark' || savedTheme === 'light' || savedTheme === 'new')) {
+        setTheme(savedTheme as ThemeType)
+      }
+    } catch (error) {
+      console.error('Error reading theme from localStorage:', error)
     }
+    setMounted(true)
   }, [])
 
   useEffect(() => {
     if (!mounted) return
 
-    const root = document.documentElement
-    root.classList.remove('light-theme', 'new-theme')
-    if (theme !== 'dark') {
-      root.classList.add(`${theme}-theme`)
+    try {
+      const root = document.documentElement
+      root.classList.remove('light-theme', 'new-theme')
+      if (theme !== 'dark') {
+        root.classList.add(`${theme}-theme`)
+      }
+      localStorage.setItem('theme', theme)
+    } catch (error) {
+      console.error('Error applying theme:', error)
     }
-    localStorage.setItem('theme', theme)
   }, [theme, mounted])
 
-  // Prevent hydration mismatch by not rendering theme-dependent content until mounted
+  if (!mounted) {
+    return null
+  }
+
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <div suppressHydrationWarning>
-        {children}
-      </div>
+      {children}
     </ThemeContext.Provider>
   )
 }

@@ -1,6 +1,11 @@
+import { Settings2 } from 'lucide-react'
 import type { Metadata } from 'next'
 
+import { Heading } from '@/ui/Heading'
+
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
+
+import { SettingsForm } from './SettingsForm'
 
 export const metadata: Metadata = {
   title: 'Настройки',
@@ -8,5 +13,16 @@ export const metadata: Metadata = {
 }
 
 export default function SettingsPage() {
-  return <div>SettingsPage</div>
+  return (
+    <div>
+      <Heading
+        Icon={Settings2}
+        isPageHeading
+      >
+        Настройки
+      </Heading>
+
+      <SettingsForm />
+    </div>
+  )
 }
