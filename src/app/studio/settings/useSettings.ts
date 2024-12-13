@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
+import { useEffect } from 'react'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 
 import { useProfile } from '@/hooks/useProfile'
@@ -19,6 +20,25 @@ export const useSettings = () => {
       refetch()
     }
   })
+
+  useEffect(() => {
+    if (!isSuccess) return
+
+    const channel = profile?.channel
+      ? {
+          avatarUrl: profile?.channel?.avatarUrl,
+          bannerUrl: profile?.channel?.bannerUrl,
+          description: profile?.channel?.description,
+          slug: profile?.channel?.slug
+        }
+      : {}
+
+    form.reset({
+      channel,
+      email: profile?.email,
+      name: profile?.name
+    })
+  }, [isSuccess, profile])
 
   const onSubmit: SubmitHandler<ISettingsData> = data => {
     mutate(data)
