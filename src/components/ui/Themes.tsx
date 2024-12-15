@@ -1,12 +1,10 @@
-import { type FC } from 'react'
-
 import { useTheme } from '@/providers/ThemeProvider'
 
 import { THEMES } from '@/constants/theme.constants'
 
 import type { ThemeType } from '@/types/theme.types'
 
-export const Themes: FC = () => {
+export function Themes() {
   const { theme, setTheme } = useTheme()
 
   return (

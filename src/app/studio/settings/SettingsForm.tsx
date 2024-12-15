@@ -1,6 +1,5 @@
 'use client'
 
-import type { FC } from 'react'
 import { Controller } from 'react-hook-form'
 
 import { Button } from '@/ui/button/Button'
@@ -10,7 +9,7 @@ import { UploadField } from '@/ui/upload-field/UploadField'
 
 import { useSettings } from './useSettings'
 
-export const SettingsForm: FC = () => {
+export function SettingsForm() {
   const {
     formObject: {
       handleSubmit,

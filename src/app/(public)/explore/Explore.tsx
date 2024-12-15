@@ -2,7 +2,6 @@
 
 import { useQuery } from '@tanstack/react-query'
 import { Compass } from 'lucide-react'
-import type { FC } from 'react'
 
 import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
@@ -10,7 +9,7 @@ import { VideoItem } from '@/ui/video-item/VideoItem'
 
 import { videoService } from '@/services/video.service'
 
-export const Explore: FC = () => {
+export function Explore() {
   const { data, isLoading } = useQuery({
     queryKey: ['explores'],
     queryFn: () => videoService.getExploreVideos()

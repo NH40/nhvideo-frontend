@@ -1,12 +1,9 @@
 import { Bell, LayoutGrid, PlusSquare } from 'lucide-react'
 import Link from 'next/link'
-import type { FC } from 'react'
 
 import { STUDIO_PAGE } from '@/config/studio-page'
 
-interface Props {}
-
-export const HeaderLinks: FC<Props> = ({}) => {
+export function HeaderLinks() {
   return (
     <div className='flex items-center gap-5'>
       <Link
