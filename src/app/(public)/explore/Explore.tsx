@@ -16,7 +16,6 @@ export const Explore: FC = () => {
     queryFn: () => videoService.getExploreVideos()
   })
 
-  //@ts-ignore
   const videos = data?.data?.videos ? data.data.videos : []
 
   return (
@@ -30,7 +29,6 @@ export const Explore: FC = () => {
           />
         ) : (
           videos.length &&
-          //@ts-ignore
           videos.map(video => (
             <VideoItem
               key={video.id}

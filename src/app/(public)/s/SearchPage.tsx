@@ -34,7 +34,6 @@ function SearchContent() {
     queryFn: () => videoService.getAll(searchParams.get('term'))
   })
 
-  //@ts-ignore
   const videos = data?.data?.videos || []
 
   return (
@@ -52,7 +51,6 @@ function SearchContent() {
             className='h-36 rounded-md'
           />
         ) : videos.length ? (
-          //@ts-ignore
           videos.map(video => (
             <VideoItem
               key={video.id}

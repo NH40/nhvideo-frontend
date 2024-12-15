@@ -4,15 +4,11 @@ import Link from 'next/link'
 
 import { isShowedSidebarAtom } from '@/store/jotai.store'
 
-import type { ISidebarItem } from '../sidebar.types'
+import type { IMenuItemProps } from './menu.types'
 
-interface Props {
-  item: ISidebarItem
-  isActive: boolean
-}
-
-export function MenuItem({ item, isActive }: Props) {
+export function MenuItem({ item, isActive }: IMenuItemProps) {
   const [isShowedSidebar] = useAtom(isShowedSidebarAtom)
+
   return (
     <li>
       <Link

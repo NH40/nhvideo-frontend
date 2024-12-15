@@ -12,6 +12,7 @@ export const useSearch = () => {
     e.preventDefault()
     if (searchTerm.trim() !== '') {
       router.push(PAGE.SEARCH(searchTerm))
+      setSearchTerm('')
     }
   }
 
