@@ -16,9 +16,9 @@ import { channelService } from '@/services/channel.service'
 export const revalidate = 100
 export const dynamic = 'force-static'
 
-export async function generateMetadata({
-  params: { slug }
-}: TPageSlugProp): Promise<Metadata> {
+export async function generateMetadata(props: TPageSlugProp): Promise<Metadata> {
+  const { slug } = await props.params
+
   const data = await channelService.bySlug(slug)
   const channel = data.data
 
@@ -40,7 +40,8 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function ChannelPage({ params: { slug } }: TPageSlugProp) {
+export default async function ChannelPage(props: TPageSlugProp) {
+  const { slug } = await props.params
   const data = await channelService.bySlug(slug)
   const channel = data.data
 

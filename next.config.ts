@@ -1,9 +1,5 @@
-import type { NextConfig } from 'next'
-
-const nextConfig: NextConfig = {
-  sassOptions: {
-    silenceDeprecations: ['legacy-js-api']
-  },
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   async rewrites() {
