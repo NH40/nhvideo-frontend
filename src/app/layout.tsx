@@ -8,9 +8,7 @@ import { SITE_NAME } from '@/constants/seo.constants'
 
 import './globals.scss'
 
-const notoSans = Noto_Sans({
-  subsets: ['latin']
-})
+const notoSans = Noto_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL(APP_URL),
@@ -31,11 +29,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html
-      lang='ru'
-      className={notoSans.className}
-    >
-      <body>
+    <html lang='ru'>
+      <body className={notoSans.className}>
         <Providers>{children}</Providers>
       </body>
     </html>

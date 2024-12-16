@@ -16,8 +16,12 @@ export async function middleware(request: NextRequest, response: NextResponse) {
   if (pathname.includes(PAGE.AUTH)) {
     return protectLoginPages(request)
   }
+
+  if (pathname.includes(PAGE.SUBSCRIPTIONS)) {
+    return protectStudio(request)
+  }
 }
 
 export const config = {
-  matcher: ['/studio/:path*', '/auth/:path*']
+  matcher: ['/studio/:path*', '/auth/:path*', '/subscriptions/:path*']
 }

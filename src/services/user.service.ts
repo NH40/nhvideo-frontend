@@ -1,4 +1,4 @@
-import type { IFullUser } from '@/types/user.types'
+import type { IProfileResponse } from '@/types/user.types'
 
 import { instance } from '@/api/axios'
 
@@ -8,7 +8,7 @@ class UserService {
   private _USERS = '/users'
 
   getProfile() {
-    return instance.get<IFullUser>(`${this._USERS}/profile`)
+    return instance.get<IProfileResponse>(`${this._USERS}/profile`)
   }
 
   updateProfile(data: ISettingsData) {
