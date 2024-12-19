@@ -47,14 +47,16 @@ export default async function ChannelPage({ params: { slug } }: TPageSlugProp) {
     <section>
       <div>
         <div className='relative w-full h-[249px] rounded-2xl overflow-hidden shadow-md'>
-          <Image
-            alt={channel.user.name || ''}
-            src={channel.bannerUrl}
-            fill
-            style={{ objectFit: 'cover' }}
-            quality={100}
-            priority
-          />
+          {channel.bannerUrl && (
+            <Image
+              alt={channel.user.name || ''}
+              src={channel.bannerUrl}
+              fill
+              style={{ objectFit: 'cover' }}
+              quality={100}
+              priority
+            />
+          )}
         </div>
         <div className='flex items-start gap-5 mt-7 mb-12 w-1/2'>
           <Image
