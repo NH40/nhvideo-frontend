@@ -1,7 +1,10 @@
+import { useAtom } from 'jotai'
 import { usePathname } from 'next/navigation'
 import { match } from 'path-to-regexp'
 
 import { PAGE } from '@/config/public-page.config'
+
+import { isShowedSidebarAtom } from '@/store/jotai.store'
 
 import type { ISidebarItem } from '../sidebar.types'
 
@@ -17,10 +20,11 @@ interface Props {
 export function SidebarMenu({ menu, title }: Props) {
   const pathname = usePathname()
   const { isLoggedIn } = useTypedSelector(state => state.auth)
+  const [isShowedSidebar] = useAtom(isShowedSidebarAtom)
 
   return (
     <nav>
-      {title && (
+      {title && isShowedSidebar && (
         <div className='opacity-40 uppercase font-medium text-xs mb-3'>{title}</div>
       )}
       <ul>

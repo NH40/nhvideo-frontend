@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   icons: {
     icon: '/logo.png'
   },
+
   description:
     'Платформа созданная для размещения видео NH для замены полноценной замены YouTube'
 }

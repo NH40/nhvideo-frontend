@@ -9,6 +9,22 @@
 html,
 body {
   @apply bg-bg text-white transition-colors duration-[333ms] ease-in-out;
+
+  .text-description {
+    @apply text-gray-400;
+  }
+
+  .bg-description {
+    @apply bg-[#181923];
+  }
+
+  .text-hover-description {
+    @apply hover:text-gray-200 mt-2;
+  }
+
+  .shadow-md-video {
+    @apply shadow-md shadow-white/10;
+  }
 }
 
 :root.light-theme {
@@ -27,6 +43,22 @@ body {
   .bg-border {
     @apply bg-border_light;
   }
+
+  .text-description {
+    @apply text-black;
+  }
+
+  .bg-description {
+    @apply bg-gray-100;
+  }
+
+  .text-hover-description {
+    @apply hover:text-gray-600 mt-2;
+  }
+
+  .shadow-md-video {
+    @apply shadow-md;
+  }
 }
 
 :root.new-theme {
@@ -37,6 +69,21 @@ body {
 
   .bg-bg {
     @apply bg-new;
+  }
+  .text-description {
+    @apply text-gray-400;
+  }
+
+  .bg-description {
+    @apply bg-gray-800;
+  }
+
+  .text-hover-description {
+    @apply hover:text-gray-200 mt-2;
+  }
+
+  .shadow-md-video {
+    @apply shadow-md;
   }
 }
 

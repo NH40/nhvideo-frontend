@@ -29,6 +29,7 @@ export function Logout() {
     <button
       onClick={() => mutate()}
       className={'group py-3 flex items-center gap-5'}
+      title='Выход'
     >
       <LogOut
         className={'min-w-6 group-hover:text-primary transition group-hover:rotate-6'}

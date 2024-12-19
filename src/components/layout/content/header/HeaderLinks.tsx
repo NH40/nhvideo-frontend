@@ -1,4 +1,4 @@
-import { Bell, LayoutGrid, PlusSquare } from 'lucide-react'
+import { LayoutGrid, PlusSquare } from 'lucide-react'
 import Link from 'next/link'
 
 import { STUDIO_PAGE } from '@/config/studio-page'
@@ -18,12 +18,12 @@ export function HeaderLinks() {
       >
         <LayoutGrid size={20} />
       </Link>
-      <Link
+      {/* <Link
         href={STUDIO_PAGE.HOME}
         className='transition-opacity hover:opacity-100 opacity-50'
       >
         <Bell size={20} />
-      </Link>
+      </Link> */}
     </div>
   )
 }

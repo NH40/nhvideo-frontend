@@ -5,27 +5,27 @@ import Link from 'next/link'
 import type { ISidebarSubItem } from '../../sidebar.types'
 
 interface Props {
-	item: ISidebarSubItem
+  item: ISidebarSubItem
 }
 
 export function SubItem({ item }: Props) {
-	return (
-		<li>
-			<Link href={item.link}>
-				{item.avatar && (
-					<Image
-						alt={item.label}
-						src={item.avatar}
-						width={30}
-						height={30}
-					/>
-				)}
-				<span>
-					<span>{item.label}</span>
-					{item.isLiveNow && <Radio />}
-					{item.isRecentUpload && <Dot />}
-				</span>
-			</Link>
-		</li>
-	)
+  return (
+    <li>
+      <Link href={item.link}>
+        {item.avatar && (
+          <Image
+            alt={item.label}
+            src={item.avatar}
+            width={30}
+            height={30}
+          />
+        )}
+        <span>
+          <span>{item.label}</span>
+          {item.isLiveNow && <Radio />}
+          {item.isRecentUpload && <Dot />}
+        </span>
+      </Link>
+    </li>
+  )
 }

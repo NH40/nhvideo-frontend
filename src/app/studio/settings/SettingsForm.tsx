@@ -51,7 +51,7 @@ export function SettingsForm() {
               placeholder='Введите имя канала:'
             />
             <Field
-              label='Slug (alias)'
+              label='Slug (alias) - введите для создания аккаунта'
               type='text'
               registration={register('channel.slug')}
               error={errors.channel?.slug?.message}

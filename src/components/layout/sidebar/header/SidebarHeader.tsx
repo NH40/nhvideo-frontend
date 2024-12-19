@@ -12,6 +12,7 @@ export function SidebarHeader() {
       <button
         className='opacity-85 hover:opacity-100 transition-opacity'
         onClick={() => setIsShowedSidebar(!isShowedSidebar)}
+        title={isShowedSidebar ? 'Скрыть сайдбар' : 'Показать сайдбар'}
       >
         <Menu />
       </button>

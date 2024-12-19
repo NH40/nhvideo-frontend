@@ -5,12 +5,24 @@ import { LazyMotion, domAnimation } from 'framer-motion'
 import { type ReactNode, useState } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { Provider } from 'react-redux'
-import { ThemeProvider } from './ThemeProvider'
 
+import { ThemeProvider } from './ThemeProvider'
 import { store } from '@/store'
 
 export function Providers({ children }: { children: ReactNode }) {
-  const [queryClient] = useState(() => new QueryClient())
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            retry: 1
+          },
+          mutations: {
+            retry: 1
+          }
+        }
+      })
+  )
 
   return (
     <ThemeProvider>

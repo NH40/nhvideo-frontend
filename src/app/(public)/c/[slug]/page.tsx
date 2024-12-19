@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 
-import { SubscribeButton } from '@/components/SubscribeButton'
-
 import { Heading } from '@/ui/Heading'
 import { VerifiedBadge } from '@/ui/VerifiedBadge'
 
@@ -11,14 +9,15 @@ import type { TPageSlugProp } from '@/types/page.types'
 import { transformCount } from '@/utils/transform-count'
 
 import { ChannelVideos } from './ChannelVideos'
+import { DynamicSubscribeButtonWrapper } from './DynamicSubscribeButtonWrapper'
 import { channelService } from '@/services/channel.service'
 
 export const revalidate = 100
 export const dynamic = 'force-static'
 
-export async function generateMetadata(props: TPageSlugProp): Promise<Metadata> {
-  const { slug } = await props.params
-
+export async function generateMetadata({
+  params: { slug }
+}: TPageSlugProp): Promise<Metadata> {
   const data = await channelService.bySlug(slug)
   const channel = data.data
 
@@ -40,8 +39,7 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function ChannelPage(props: TPageSlugProp) {
-  const { slug } = await props.params
+export default async function ChannelPage({ params: { slug } }: TPageSlugProp) {
   const data = await channelService.bySlug(slug)
   const channel = data.data
 
@@ -52,8 +50,8 @@ export default async function ChannelPage(props: TPageSlugProp) {
           <Image
             alt={channel.user.name || ''}
             src={channel.bannerUrl}
-            layout='fill'
-            objectFit='cover'
+            fill
+            style={{ objectFit: 'cover' }}
             quality={100}
             priority
           />
@@ -75,20 +73,20 @@ export default async function ChannelPage(props: TPageSlugProp) {
             >
               <span className='flex items-center gap-2'>
                 {channel.user.name}
-                {channel.isVerified && <VerifiedBadge size={26} />}
+                {channel.isVerified && <VerifiedBadge size={18} />}
               </span>
             </Heading>
             <div className='mb-2 text-gray-400 text-[0.9rem] flex items-center gap-1'>
               <span>@{channel.slug}</span>
               <span>•</span>
-              <span>{transformCount(channel.subscribers.length)} подписчиков</span>
+              <span>{transformCount(channel.subscribers.length)} subscribers</span>
               <span>•</span>
-              <span>{channel.videos.length} видео</span>
+              <span>{channel.videos.length} videos</span>
             </div>
             <article className='mb-4 text-gray-400 text-sm leading-snug w-3/4'>
               {channel.description}
             </article>
-            <SubscribeButton slug={channel.slug} />
+            <DynamicSubscribeButtonWrapper slug={slug} />
           </div>
         </div>
       </div>

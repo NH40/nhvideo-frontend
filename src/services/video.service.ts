@@ -1,16 +1,12 @@
-import type { IVideo } from '@/types/video.types'
+import type { ISingleVideoResponse, IVideo, IVideosPagination } from '@/types/video.types'
 
 import { axiosClassic } from '@/api/axios'
-
-interface IVideoResponse {
-  videos: IVideo[]
-}
 
 class VideoService {
   private _VIDEOS = '/videos'
 
   getAll(searchTerm?: string | null) {
-    return axiosClassic.get<IVideoResponse>(
+    return axiosClassic.get<IVideosPagination>(
       this._VIDEOS,
       searchTerm
         ? {
@@ -22,8 +18,14 @@ class VideoService {
     )
   }
 
+  byPublicId(publicId?: string | null) {
+    return axiosClassic.get<ISingleVideoResponse>(
+      `${this._VIDEOS}/by-publicId/${publicId}`
+    )
+  }
+
   getVideoGames() {
-    return axiosClassic.get<IVideoResponse>(`${this._VIDEOS}/games`)
+    return axiosClassic.get<IVideo[]>(`${this._VIDEOS}/games`)
   }
 
   getTrendingVideos() {
@@ -31,7 +33,7 @@ class VideoService {
   }
 
   getExploreVideos() {
-    return axiosClassic.get<IVideoResponse>(`${this._VIDEOS}/explore`)
+    return axiosClassic.get<IVideo[]>(`${this._VIDEOS}/explore`)
   }
 }
 
