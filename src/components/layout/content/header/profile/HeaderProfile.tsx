@@ -5,10 +5,10 @@ import { LinkButton } from '@/ui/button/LinkButton'
 import { PAGE } from '@/config/public-page.config'
 
 import { HeaderAvatar } from './HeaderAvatar'
-import { useTypedSelector } from '@/store'
+import { useAuthStore } from '@/store/auth.store'
 
 export function HeaderProfile() {
-  const { isLoggedIn } = useTypedSelector(state => state.auth)
+  const { isLoggedIn } = useAuthStore()
 
   return isLoggedIn ? (
     <HeaderAvatar />

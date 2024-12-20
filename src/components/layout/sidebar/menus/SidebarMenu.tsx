@@ -4,13 +4,13 @@ import { match } from 'path-to-regexp'
 
 import { PAGE } from '@/config/public-page.config'
 
+import { useAuthStore } from '@/store/auth.store'
 import { isShowedSidebarAtom } from '@/store/jotai.store'
 
 import type { ISidebarItem } from '../sidebar.types'
 
 import { MenuItem } from './MenuItem'
 import { MyChannelMenuItem } from './MyChannelMenuItem'
-import { useTypedSelector } from '@/store'
 
 interface Props {
   title?: string
@@ -19,7 +19,7 @@ interface Props {
 
 export function SidebarMenu({ menu, title }: Props) {
   const pathname = usePathname()
-  const { isLoggedIn } = useTypedSelector(state => state.auth)
+  const { isLoggedIn } = useAuthStore()
   const [isShowedSidebar] = useAtom(isShowedSidebarAtom)
 
   return (

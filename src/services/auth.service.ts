@@ -3,12 +3,11 @@ import Cookies from 'js-cookie'
 import { EnumTokens } from '@/types/auth.types'
 import type { IUser } from '@/types/user.types'
 
-import { clearAuthData, setAuthData } from '@/store/auth.slice'
+import { useAuthStore } from '@/store/auth.store'
 
 import { axiosClassic } from '@/api/axios'
 
 import type { IAuthData } from '@/app/auth/auth-form.types'
-import { store } from '@/store'
 
 interface IAuthResponse {
   user: IUser
@@ -35,7 +34,7 @@ class AuthService {
 
     if (response.data.accessToken) {
       this._saveTokenStorage(response.data.accessToken)
-      store.dispatch(setAuthData(response.data))
+      useAuthStore.getState().setAuthData(response.data)
     }
 
     return response
@@ -48,7 +47,7 @@ class AuthService {
     try {
       await this.getNewTokens()
     } catch (error) {
-      store.dispatch(clearAuthData())
+      useAuthStore.getState().clearAuthData()
     }
   }
 
@@ -58,7 +57,7 @@ class AuthService {
 
     if (response.data.accessToken) {
       this._saveTokenStorage(response.data.accessToken)
-      store.dispatch(setAuthData(response.data))
+      useAuthStore.getState().setAuthData(response.data)
     }
 
     return response
@@ -101,7 +100,7 @@ class AuthService {
 
   removeFromStorage() {
     Cookies.remove(EnumTokens.ACCESS_TOKEN)
-    store.dispatch(clearAuthData())
+    useAuthStore.getState().clearAuthData()
   }
 }
 

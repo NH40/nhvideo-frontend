@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { PAGE } from '@/config/public-page.config'
 
 import { authService } from '@/services/auth.service'
-import { useTypedSelector } from '@/store'
+import { useAuthStore } from '@/store/auth.store'
 
 export function Logout() {
   const router = useRouter()
@@ -21,7 +21,7 @@ export function Logout() {
     }
   })
 
-  const { isLoggedIn } = useTypedSelector(state => state.auth)
+  const { isLoggedIn } = useAuthStore()
 
   if (!isLoggedIn) return null
 
