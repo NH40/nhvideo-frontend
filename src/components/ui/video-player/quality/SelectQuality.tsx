@@ -1,5 +1,6 @@
 'use client'
 
+import cn from 'clsx'
 import { AnimatePresence, m } from 'framer-motion'
 
 import { useOutside } from '@/hooks/useOutside'
@@ -11,10 +12,13 @@ import { VIDEO_QUALITIES } from './qualities.data'
 interface Props {
   currentValue: EnumVideoPlayerQuality
   onChange: (quality: EnumVideoPlayerQuality) => void
+  maxResolution: EnumVideoPlayerQuality
 }
 
-export function SelectQuality({ currentValue, onChange }: Props) {
+export function SelectQuality({ currentValue, onChange, maxResolution }: Props) {
   const { isShow, ref, setIsShow } = useOutside(false)
+
+  const availableQualities = VIDEO_QUALITIES.slice(VIDEO_QUALITIES.indexOf(maxResolution))
 
   return (
     <div
@@ -30,15 +34,14 @@ export function SelectQuality({ currentValue, onChange }: Props) {
 
       <AnimatePresence>
         {isShow && (
-          <m.ul
+          <m.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.3 }}
-            className='bg-white/10 py-2 px-4 rounded absolute bottom-full right-0 z-10 shadow'
           >
-            {VIDEO_QUALITIES.map(quality =>
-              quality === currentValue ? null : (
+            <ul className='bg-gray-800 py-2 px-4 rounded absolute bottom-[125%] right-0 z-10 shadow'>
+              {availableQualities.map(quality => (
                 <li
                   key={quality}
                   className='mb-1'
@@ -48,14 +51,18 @@ export function SelectQuality({ currentValue, onChange }: Props) {
                       onChange(quality)
                       setIsShow(false)
                     }}
-                    className='transition-colors hover:text-primary'
+                    className={cn('border-b border-b-transparent transition-colors', {
+                      'hover:text-primary': quality !== currentValue,
+                      'border-b-white': quality === currentValue
+                    })}
+                    disabled={quality === currentValue}
                   >
                     {quality}
                   </button>
                 </li>
-              )
-            )}
-          </m.ul>
+              ))}
+            </ul>
+          </m.div>
         )}
       </AnimatePresence>
     </div>

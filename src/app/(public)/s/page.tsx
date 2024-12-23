@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
 
-import { SearchPage } from './SearchPage'
+import { SPage } from './SPage'
 
 export const metadata: Metadata = {
   title: 'Поиск',
   ...NO_INDEX_PAGE
 }
 
-export default function SPage() {
-  return <SearchPage />
+export default function Page() {
+  return <SPage />
 }

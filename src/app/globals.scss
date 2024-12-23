@@ -96,3 +96,28 @@ body {
     @apply grid grid-cols-6 gap-3;
   }
 }
+
+.volume-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 10.5px;
+  height: 10.5px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 10.5px;
+  height: 10.5px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.volume-slider::-ms-thumb {
+  width: 10.5px;
+  height: 10.5px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
