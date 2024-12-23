@@ -12,7 +12,6 @@ interface Props {
   changeVolume: (value: number) => void
   toggleMute: () => void
   toggleTheaterMode: () => void
-  toggleLightingMode: () => void
   volume: number
 }
 
@@ -66,8 +65,4 @@ export function useVideoHotkeys({ volume, ...fn }: Props) {
   useHotkeys('t', () => {
     fn.toggleTheaterMode()
   })
-
-  // useHotkeys('l', () => {
-  //   fn.toggleLightingMode()
-  // })
 }

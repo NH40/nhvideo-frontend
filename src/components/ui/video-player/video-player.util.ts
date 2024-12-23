@@ -1,13 +1,13 @@
 import type { HTMLCustomVideoElement } from './video-player.types'
 
-export const getVideoInfo = (video: HTMLCustomVideoElement) => {
-  const currentTime = video.currentTime
-  const originalTime = video.duration
+export const getVideoInfo = (video: HTMLCustomVideoElement | null) => {
+  const currentTime = video?.currentTime || 0
+  const originalTime = video?.duration || 0
 
   return {
     currentTime,
     originalTime,
-    progress: (currentTime / originalTime) * 100
+    progress: originalTime > 0 ? (currentTime / originalTime) * 100 : 0
   }
 }
 
