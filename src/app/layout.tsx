@@ -8,6 +8,8 @@ import { SITE_NAME } from '@/constants/seo.constants'
 
 import './globals.scss'
 
+export const fetchCache = 'default-cache'
+
 const notoSans = Noto_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {

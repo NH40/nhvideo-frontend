@@ -27,13 +27,13 @@ export const metadata: Metadata = {
 export default async function VideoGamesPage() {
   const { data: videos } = await videoService.getVideoGames()
 
-  const sortedVideos = videos.videos || []
+  const sortedVideos = videos.videos
 
   return (
     <section>
       <Heading Icon={Gamepad2}>Видео игры</Heading>
       <div className='grid-6-cols'>
-        {sortedVideos.length ? (
+        {sortedVideos?.length ? (
           sortedVideos.map(video => (
             <VideoItem
               key={video.id}

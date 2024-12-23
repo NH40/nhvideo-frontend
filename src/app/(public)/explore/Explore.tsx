@@ -7,15 +7,19 @@ import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { VideoItem } from '@/ui/video-item/VideoItem'
 
+import { useAuthStore } from '@/store/auth.store'
+
 import { videoService } from '@/services/video.service'
 
 export function Explore() {
+  const { user } = useAuthStore()
+
   const { data, isLoading } = useQuery({
-    queryKey: ['explores'],
-    queryFn: () => videoService.getExploreVideos()
+    queryKey: ['explore'],
+    queryFn: () => videoService.getExploreVideos(user?.id)
   })
 
-  const videos = data?.data?.videos ? data.data.videos : []
+  const recomendedVideos = data?.data.videos
 
   return (
     <section>
@@ -27,8 +31,8 @@ export function Explore() {
             className='h-36 rounded-md'
           />
         ) : (
-          videos.length &&
-          videos.map(video => (
+          recomendedVideos?.length &&
+          recomendedVideos.map(video => (
             <VideoItem
               key={video.id}
               video={video}
