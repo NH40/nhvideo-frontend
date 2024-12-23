@@ -11,10 +11,13 @@ import type { ISingleVideoResponse } from '@/types/video.types'
 
 import { isShowedSidebarAtom } from '@/store/jotai.store'
 
+import { formatViews } from '@/utils/format-views'
+
 import { SimilarVideos } from './SimilarVideos'
 import { VideoDescription } from './description/VideoDescription'
 import { VideoActions } from './video-actions/VideoActions'
 import { VideoChannel } from './video-channel/VideoChannel'
+import { Comments } from './сomments/Comments'
 
 interface Props {
   video: ISingleVideoResponse
@@ -54,9 +57,7 @@ export function SingleVideo({ video }: Props) {
             >
               {video.title}
             </Heading>
-            <div className='text-gray-400'>
-              {video.viewsCount.toLocaleString('ru-RU')} views
-            </div>
+            <div className='text-gray-400'>{formatViews(video.viewsCount)}</div>
           </div>
           <VideoActions video={video} />
         </div>
@@ -64,7 +65,7 @@ export function SingleVideo({ video }: Props) {
 
         <VideoDescription description={video.description} />
 
-        {/* <Comments video={video} /> */}
+        <Comments video={video} />
       </div>
 
       {!!video.similarVideos.length && (

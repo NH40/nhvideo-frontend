@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
 
 import type { EnumVideoPlayerQuality } from '../video-player.types'
@@ -23,20 +22,20 @@ export function useVideoHotkeys({ volume, ...fn }: Props) {
   // 	fn.togglePlayPause()
   // })
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.code === 'Space' || event.key === ' ') {
-        event.preventDefault()
-        fn.togglePlayPause()
-      }
-    }
+  // useEffect(() => {
+  //   const handleKeyDown = (event: KeyboardEvent) => {
+  //     if (event.code === 'Space' || event.key === ' ') {
+  //       event.preventDefault()
+  //       fn.togglePlayPause()
+  //     }
+  //   }
 
-    window.addEventListener('keydown', handleKeyDown)
+  //   window.addEventListener('keydown', handleKeyDown)
 
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [fn])
+  //   return () => {
+  //     window.removeEventListener('keydown', handleKeyDown)
+  //   }
+  // }, [fn])
 
   useHotkeys('left', () => {
     fn.skipTime('backward')

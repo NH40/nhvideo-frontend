@@ -1,7 +1,9 @@
 import dayjs from 'dayjs'
-import relativeDate from 'dayjs/plugin/relativeTime'
+import 'dayjs/locale/ru'
+import relativeTime from 'dayjs/plugin/relativeTime'
 
-dayjs.extend(relativeDate)
+dayjs.locale('ru')
+dayjs.extend(relativeTime)
 
 export function transformDate(createdAt: string): string {
   return dayjs(createdAt).fromNow()

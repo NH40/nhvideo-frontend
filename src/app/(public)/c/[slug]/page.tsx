@@ -9,7 +9,7 @@ import { channelService } from '@/services/channel.service'
 export const revalidate = 100
 
 export async function generateMetadata({ params }: TPageSlugProp): Promise<Metadata> {
-  const slug = (await params).slug
+  const { slug } = await params
   const data = await channelService.bySlug(slug)
   const channel = data.data
 
@@ -32,7 +32,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: TPageSlugProp) {
-  const slug = (await params).slug
+  const { slug } = await params
   const data = await channelService.bySlug(slug)
   const channel = data.data
 
