@@ -17,7 +17,7 @@ export function SubscriptionsPage() {
         isPageHeading
         Icon={Heart}
       >
-        Подписки - видео
+        Видео с каналов подписок
       </Heading>
       <div className='grid grid-cols-6 gap-6'>
         {isLoading ? (

@@ -16,6 +16,7 @@ import { formatViews } from '@/utils/format-views'
 import { SimilarVideos } from './SimilarVideos'
 import { Comments } from './comments/Comments'
 import { VideoDescription } from './description/VideoDescription'
+import { useUpdateViews } from './useUpdateViews'
 import { VideoActions } from './video-actions/VideoActions'
 import { VideoChannel } from './video-channel/VideoChannel'
 
@@ -26,6 +27,8 @@ interface Props {
 export function SingleVideo({ video }: Props) {
   const [isTheaterMode, setIsTheaterMode] = useState(false)
   const isShowedSidebar = useAtomValue(isShowedSidebarAtom)
+
+  useUpdateViews({ video })
 
   return (
     <section className='grid gap-16 grid-cols-[3fr_.8fr] relative'>
