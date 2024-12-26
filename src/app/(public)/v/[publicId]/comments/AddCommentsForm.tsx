@@ -57,10 +57,11 @@ export function AddCommentsForm({ refetch, videoId }: Props) {
             required: true
           })}
           placeholder='Введите комментарий:'
-          rows={1}
           wrapperClassName='mb-0'
+          rows={1}
           error={errors.text?.message}
         />
+
         <button
           className='bg-border rounded font-medium h-max py-2.5'
           disabled={isPending}
