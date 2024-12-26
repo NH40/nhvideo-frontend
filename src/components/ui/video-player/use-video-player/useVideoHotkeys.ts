@@ -16,10 +16,10 @@ interface Props {
 }
 
 export function useVideoHotkeys({ volume, ...fn }: Props) {
-  // useHotkeys('space', e => {
-  // 	e.preventDefault()
-  // 	fn.togglePlayPause()
-  // })
+  useHotkeys('space', e => {
+    e.preventDefault()
+    fn.togglePlayPause()
+  })
 
   // useEffect(() => {
   //   const handleKeyDown = (event: KeyboardEvent) => {
