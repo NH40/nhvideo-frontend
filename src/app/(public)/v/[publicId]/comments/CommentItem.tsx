@@ -1,3 +1,5 @@
+'use client'
+
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -30,10 +32,10 @@ export function CommentItem({ comment, refetch }: Props) {
   return (
     <div className='flex gap-3.5 items-start py-5 border-b border-b-border/5 last:border-none'>
       {comment.user?.channel ? (
-        <Link href={PAGE.CHANNEL(comment?.user?.channel?.slug)}>
+        <Link href={PAGE.CHANNEL(comment?.user?.channel?.slug || '')}>
           <Image
             alt={comment.user.name || ''}
-            src={comment.user.channel?.avatarUrl}
+            src={comment.user.channel?.avatarUrl || ''}
             width={40}
             height={40}
             className='rounded-lg flex-shrink-0 shadow'
@@ -63,7 +65,6 @@ export function CommentItem({ comment, refetch }: Props) {
             className='text-gray-300 text-sm leading-snug bg-transparent resize-none outline-none border border-transparent focus:border-border w-[200%]'
             value={text}
             onChange={e => setText(e.target.value)}
-            rows={3}
           />
         </div>
         <DynamicCommentActions

@@ -9,6 +9,7 @@ import { VerifiedBadge } from '@/ui/VerifiedBadge'
 
 import type { IChannel } from '@/types/channel.types'
 
+import { formatSubscribers } from '@/utils/format-subscribers'
 import { transformCount } from '@/utils/transform-count'
 
 const DynamicSubscribeButton = dynamicNext(
@@ -50,11 +51,14 @@ export function ChannelPage({ channel }: { channel: IChannel }) {
             </span>
           </Heading>
           <div className='mb-2 text-gray-400 text-[0.9rem] flex items-center gap-1'>
-            <span>/{channel.slug}</span>
+            <span>@{channel.slug}</span>
             <span>•</span>
-            <span>{transformCount(channel.subscribers.length)} subscribers</span>
+            <span>
+              {transformCount(channel.subscribers.length)}{' '}
+              {formatSubscribers(channel.subscribers.length)}
+            </span>
             <span>•</span>
-            <span>{channel.videos.length} videos</span>
+            <span>{channel.videos.length} видео</span>
           </div>
           <article className='mb-4 text-gray-400 text-sm leading-snug w-3/4'>
             {channel.description}

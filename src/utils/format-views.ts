@@ -1,6 +1,6 @@
 export function formatViews(n: number): string {
   const views = n.toLocaleString('ru-RU')
-  
+
   // Get last digit and last two digits
   const lastDigit = n % 10
   const lastTwoDigits = n % 100

@@ -1,5 +1,3 @@
-'use client'
-
 import dynamicNext from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -23,14 +21,14 @@ const DynamicSubscribeButton = dynamicNext(
 export function VideoChannel({ video }: { video: ISingleVideoResponse }) {
   return (
     <div className='flex items-center justify-between mb-6'>
-      <div className='flex gap-2.5 items-center'>
+      <div className='flex gap-4 items-center'>
         <Link href={PAGE.CHANNEL(video.channel.slug)}>
           <Image
             alt={video.channel.user.name || ''}
             src={video.channel.avatarUrl}
             width={55}
             height={55}
-            className='rounded flex-shrink-0 shadow'
+            className='rounded-xl flex-shrink-0 shadow'
             priority
           />
         </Link>
@@ -42,7 +40,7 @@ export function VideoChannel({ video }: { video: ISingleVideoResponse }) {
             >
               <span className='flex items-center gap-2'>
                 {video.channel.user.name}
-                {video.channel.isVerified && <VerifiedBadge size={14} />}
+                {video.channel.isVerified && <VerifiedBadge size={20} />}
               </span>
             </Heading>
           </Link>

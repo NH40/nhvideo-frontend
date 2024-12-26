@@ -14,10 +14,10 @@ import { isShowedSidebarAtom } from '@/store/jotai.store'
 import { formatViews } from '@/utils/format-views'
 
 import { SimilarVideos } from './SimilarVideos'
+import { Comments } from './comments/Comments'
 import { VideoDescription } from './description/VideoDescription'
 import { VideoActions } from './video-actions/VideoActions'
 import { VideoChannel } from './video-channel/VideoChannel'
-import { Comments } from './сomments/Comments'
 
 interface Props {
   video: ISingleVideoResponse
@@ -44,7 +44,7 @@ export function SingleVideo({ video }: Props) {
           className={cn(
             'flex justify-between items-start pb-6 mb-6 border-b border-border',
             {
-              'pt-[45.5rem]': isShowedSidebar && isTheaterMode,
+              'pt-[45rem]': isShowedSidebar && isTheaterMode,
               'pt-[50.5rem]': isTheaterMode
             }
           )}

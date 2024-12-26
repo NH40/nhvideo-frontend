@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
+import toast from 'react-hot-toast'
 
 import type { IComment } from '@/types/comment.types'
 
@@ -21,6 +22,7 @@ export function CommentActions({ comment, refetch, newText }: Props) {
       commentService.update(comment.id, { text: newText, videoId: comment.videoId }),
     onSuccess: () => {
       refetch()
+      toast.success('Комментарий успешно обновлен!')
     }
   })
 
@@ -29,12 +31,9 @@ export function CommentActions({ comment, refetch, newText }: Props) {
     mutationFn: () => commentService.delete(comment.id),
     onSuccess: () => {
       refetch()
+      toast.success('Комментарий успешно удален!')
     }
   })
-
-  console.log(user)
-
-  console.log(comment.user.id)
 
   if (!isLoggedIn) return null
   if (user?.id !== comment.user.id) return null

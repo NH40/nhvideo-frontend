@@ -24,7 +24,7 @@ export function VideoDescription({ description }: { description: string }) {
           className='text-description uppercase transition-colors text-hover-description mt-2'
           aria-expanded={isExpanded}
         >
-          {isExpanded ? 'скрыть' : 'показать еще'}
+          {isExpanded ? 'Скрыть' : 'Показать больше'}
         </button>
       )}
     </div>

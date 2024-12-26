@@ -39,6 +39,10 @@ class VideoService {
       }
     })
   }
+
+  updateViews(publicId: string) {
+    return axiosClassic.put(`${this._VIDEOS}/update-views-count/${publicId}`)
+  }
 }
 
 export const videoService = new VideoService()

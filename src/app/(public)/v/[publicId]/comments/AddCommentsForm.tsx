@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query'
 import { type SubmitHandler, useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 
 import { Textarea } from '@/ui/field/Textarea'
 
@@ -32,6 +33,7 @@ export function AddCommentsForm({ refetch, videoId }: Props) {
     onSuccess: () => {
       refetch()
       reset()
+      toast.success('Комментарий успешно добавлен!')
     }
   })
 
@@ -63,7 +65,7 @@ export function AddCommentsForm({ refetch, videoId }: Props) {
           className='bg-border rounded font-medium h-max py-2.5'
           disabled={isPending}
         >
-          {isPending ? 'Отправления...' : 'Отправить'}
+          {isPending ? 'Отправляем...' : 'Отправить'}
         </button>
       </form>
     </div>
