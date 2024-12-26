@@ -7,7 +7,7 @@ import { Suspense } from 'react'
 
 import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
-import { VideoItem } from '@/ui/video-item/VideoItem'
+import { HorizontalVideoItem } from '@/ui/video-item/HorizontalVideoItem'
 
 import { videoService } from '@/services/video.service'
 
@@ -44,7 +44,7 @@ function SearchContent() {
       >
         Поиск: &quot;{searchParams.get('term')}&quot;
       </Heading>
-      <div className='grid grid-cols-6 gap-6'>
+      <div>
         {isLoading ? (
           <SkeletonLoader
             count={6}
@@ -52,7 +52,7 @@ function SearchContent() {
           />
         ) : videos.length ? (
           videos.map(video => (
-            <VideoItem
+            <HorizontalVideoItem
               key={video.id}
               video={video}
             />
