@@ -40,7 +40,7 @@ export function SelectQuality({ currentValue, onChange, maxResolution }: Props) 
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.3 }}
           >
-            <ul className='bg-gray-800 py-2 px-4 rounded absolute bottom-[125%] right-0 z-10 shadow'>
+            <ul className='bg-description py-2 px-4 rounded absolute bottom-[125%] right-0 z-10 shadow'>
               {availableQualities.map(quality => (
                 <li
                   key={quality}

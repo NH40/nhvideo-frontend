@@ -40,7 +40,7 @@ export function PlaylistItem({ playlist }: Props) {
               className='rounded-lg shadow-lg relative'
             />
           ) : (
-            <div className='w-[290] h-[163] rounded-lg shadow-lg relative' />
+            <div className='w-[310] h-[130] rounded-lg shadow-lg relative' />
           )}
           <div className='absolute bottom-1.5 right-1.5 py-0.5 text-xs font-medium bg-black/40 rounded px-1.5'>
             {playlist.videos.length} видео

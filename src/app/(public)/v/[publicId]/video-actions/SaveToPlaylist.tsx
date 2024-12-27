@@ -52,7 +52,7 @@ export function SaveToPlaylist({ video }: Props) {
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.3 }}
           >
-            <ul className='bg-gray-800 py-2 px-3 rounded absolute bottom-8 right-0 shadow w-max max-w-32'>
+            <ul className='bg-description py-2 px-3 rounded absolute bottom-8 right-0 shadow w-max max-w-32'>
               {data?.data.map(playlist => (
                 <li
                   key={playlist.id}
