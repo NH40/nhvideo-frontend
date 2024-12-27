@@ -1,31 +1,36 @@
+import { useMutation } from '@tanstack/react-query'
 import { AnimatePresence, m } from 'framer-motion'
-import { ListVideo } from 'lucide-react'
+import { Check, ListVideo } from 'lucide-react'
+import toast from 'react-hot-toast'
 
 import { useOutside } from '@/hooks/useOutside'
 
 import type { ISingleVideoResponse } from '@/types/video.types'
+
+import { useUserPlaylists } from '@/app/(user)/playlists/useUserPlaylists'
+import { playlistService } from '@/services/playlist.service'
 
 interface Props {
   video: ISingleVideoResponse
 }
 
 export function SaveToPlaylist({ video }: Props) {
-  // const { data, refetch: refetchPlaylists } = useUserPlaylists()
+  const { data, refetch: refetchPlaylists } = useUserPlaylists()
 
   const { isShow, ref, setIsShow } = useOutside(false)
 
-  // const { mutate: togglePlaylist, isPending } = useMutation({
-  //   mutationKey: ['toggle video'],
-  //   mutationFn: (playlistId: string) =>
-  //     playlistService.toggleVideoInPlaylist(playlistId, video.id),
-  //   onSuccess() {
-  //     toast.success('Successfully changed!', {
-  //       id: 'playlist'
-  //     })
-  //     setIsShow(false)
-  //     refetchPlaylists()
-  //   }
-  // })
+  const { mutate: togglePlaylist, isPending } = useMutation({
+    mutationKey: ['toggle video'],
+    mutationFn: (playlistId: string) =>
+      playlistService.toggleVideoInPlaylist(playlistId, video.id),
+    onSuccess() {
+      toast.success('Успешно изменено!', {
+        id: 'playlist'
+      })
+      setIsShow(false)
+      refetchPlaylists()
+    }
+  })
 
   return (
     <div
@@ -48,7 +53,7 @@ export function SaveToPlaylist({ video }: Props) {
             transition={{ duration: 0.3 }}
           >
             <ul className='bg-gray-800 py-2 px-3 rounded absolute bottom-8 right-0 shadow w-max max-w-32'>
-              {/* {data?.data.map(playlist => (
+              {data?.data.map(playlist => (
                 <li
                   key={playlist.id}
                   className='mb-1 text-sm'
@@ -62,11 +67,13 @@ export function SaveToPlaylist({ video }: Props) {
                     }
                     disabled={isPending}
                   >
-                    {playlist.videos.some(v => v.id === video.id) && <Check size={16} />}{' '}
                     {playlist.title}
+                    {playlist.videos.some(v => v.id === video.id) && (
+                      <Check size={16} />
+                    )}{' '}
                   </button>
                 </li>
-              ))} */}
+              ))}
             </ul>
           </m.div>
         )}

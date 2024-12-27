@@ -20,6 +20,10 @@ class PUBLIC_PAGE_CONFIG {
     return `/c/${path}`
   }
 
+  PLAYLISTS(path?: string) {
+    return `/playlists${path ? `/${path}` : ''}`
+  }
+
   SEARCH(searchTerm: string) {
     return `/s?term=${searchTerm}`
   }
