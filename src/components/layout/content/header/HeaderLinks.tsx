@@ -9,12 +9,14 @@ export function HeaderLinks() {
       <Link
         href={STUDIO_PAGE.UPLOAD_VIDEO}
         className='transition-opacity hover:opacity-100 opacity-50'
+        title='Загрузить видео'
       >
         <PlusSquare size={20} />
       </Link>
       <Link
         href={STUDIO_PAGE.HOME}
         className='transition-opacity hover:opacity-100 opacity-50'
+        title='Моя Студия'
       >
         <LayoutGrid size={20} />
       </Link>

@@ -25,14 +25,14 @@ export function SettingsForm() {
   if (isProfileLoading) return <div>Загрузка...</div>
 
   return (
-    <div className='w-9/12'>
+    <div className='w-3/5'>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='grid grid-cols-2 gap-10'>
           <div>
             <Field
               label='Email'
               type='email'
-              registration={register('email', { required: 'Email обязательное поле' })}
+              registration={register('email', { required: 'Email is required!' })}
               error={errors.email?.message}
               placeholder='Введите email:'
             />
@@ -44,14 +44,14 @@ export function SettingsForm() {
               placeholder='Введите пароль:'
             />
             <Field
-              label='Имя канала'
+              label='Имя'
               type='text'
               registration={register('name')}
               error={errors.name?.message}
-              placeholder='Введите имя канала:'
+              placeholder='Введите имя:'
             />
             <Field
-              label='Slug (alias) - введите для создания аккаунта'
+              label='Slug (alias)'
               type='text'
               registration={register('channel.slug')}
               error={errors.channel?.slug?.message}
@@ -87,19 +87,19 @@ export function SettingsForm() {
               name='channel.bannerUrl'
               render={({ field: { onChange, value }, fieldState: { error } }) => (
                 <UploadField
-                  label='Шапка профиля:'
+                  label='Баннер:'
                   onChange={onChange}
                   value={value}
                   error={error}
                   folder='banners'
-                  aspectRation='16:9'
+                  sizePreview={[446, 250]}
                   overlay='/overlay.png'
                 />
               )}
             />
           </div>
         </div>
-        <div className='text-center mt-2'>
+        <div className='text-center mt-10'>
           <Button
             type='submit'
             isLoading={isLoading}

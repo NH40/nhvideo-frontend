@@ -5,7 +5,7 @@ import { type SubmitHandler, useForm } from 'react-hook-form'
 import { useProfile } from '@/hooks/useProfile'
 
 import type { ISettingsData } from './settings.types'
-import { userService } from '@/services/user.service'
+import { userService } from '@/services/studio/user.service'
 
 export const useSettings = () => {
   const form = useForm<ISettingsData>({

@@ -13,7 +13,7 @@ import type { ISingleVideoResponse } from '@/types/video.types'
 import { transformCount } from '@/utils/transform-count'
 
 import { SaveToPlaylist } from './SaveToPlaylist'
-import { userService } from '@/services/user.service'
+import { userService } from '@/services/studio/user.service'
 
 export function VideoActions({ video }: { video: ISingleVideoResponse }) {
   const { profile, refetch } = useProfile()
