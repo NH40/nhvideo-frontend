@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
 
-import { StudioVideoListPage } from './StudioVideoListPage'
+import { EditVideoForm } from './EditVideoForm'
 
 export const metadata: Metadata = {
-  title: 'Студия',
+  title: 'Изменить видео',
   ...NO_INDEX_PAGE
 }
 
-export default function StudioPage() {
-  return <StudioVideoListPage />
+export default function EditVideoPage() {
+  return <EditVideoForm />
 }

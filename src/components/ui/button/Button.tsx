@@ -21,7 +21,7 @@ export function Button({ children, isLoading, variant = 'primary', ...props }: P
       disabled={isLoading || props.disabled}
       {...props}
     >
-      {isLoading ? 'Loading...' : children}
+      {isLoading ? 'Загрузка...' : children}
     </button>
   )
 }

@@ -61,7 +61,7 @@ export function TagsField({
           {tags.map((tag, index) => (
             <div
               key={tag}
-              className='flex items-center px-2 py-1 bg-gray-700 text-white rounded'
+              className='flex items-center px-2 py-1 bg-description rounded'
             >
               <span>{tag}</span>
               <button

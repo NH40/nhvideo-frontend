@@ -16,9 +16,10 @@ import { VideoItemTitle } from './VideoItemTitle'
 interface Props {
   video: IVideo
   Icon?: LucideIcon
+  isImagePriority?: boolean
 }
 
-export function VideoItem({ video, Icon }: Props) {
+export function VideoItem({ video, Icon, isImagePriority }: Props) {
   return (
     <m.div
       whileHover={{
@@ -39,6 +40,7 @@ export function VideoItem({ video, Icon }: Props) {
             height={171}
             alt={video.title}
             className='rounded-md'
+            priority={isImagePriority}
           />
         </Link>
         <Link
@@ -51,6 +53,7 @@ export function VideoItem({ video, Icon }: Props) {
             height={35}
             alt={video?.channel?.user?.name || ''}
             className='rounded-full shadow'
+            priority={isImagePriority}
           />
         </Link>
       </div>

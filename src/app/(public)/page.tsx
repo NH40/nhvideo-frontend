@@ -38,6 +38,7 @@ export default async function HomePage() {
                 key={video.id}
                 video={video}
                 Icon={Flame}
+                isImagePriority
               />
             ))}
         </div>

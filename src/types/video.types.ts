@@ -16,6 +16,7 @@ export interface IVideo {
   isPublic: boolean
   channel: IChannel
   createdAt: string
+  updatedAt: string
 }
 
 export interface IFullVideo extends IVideo {
@@ -27,6 +28,13 @@ export interface ISingleVideoResponse extends IFullVideo {
   similarVideos: IVideo[]
 }
 
+export interface IStudioVideoResponse extends IFullVideo {
+  tags: {
+    id: string
+    name: string
+  }[]
+}
+
 export interface IVideosPagination extends IPagination {
-  videos: IVideo[]
+  videos: IFullVideo[]
 }
