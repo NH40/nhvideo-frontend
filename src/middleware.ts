@@ -9,19 +9,15 @@ export async function middleware(request: NextRequest, response: NextResponse) {
   const url = new URL(request.url)
   const pathname = url.pathname
 
-  if (pathname.includes(STUDIO_PAGE.HOME)) {
+  if (pathname.includes(STUDIO_PAGE.HOME) || pathname.includes('/my')) {
     return protectStudio(request)
   }
 
   if (pathname.includes(PAGE.AUTH)) {
     return protectLoginPages(request)
   }
-
-  if (pathname.includes(PAGE.SUBSCRIPTIONS)) {
-    return protectStudio(request)
-  }
 }
 
 export const config = {
-  matcher: ['/studio/:path*', '/auth/:path*', '/subscriptions/:path*']
+  matcher: ['/studio/:path*', '/auth/:path*', '/my/:path*']
 }

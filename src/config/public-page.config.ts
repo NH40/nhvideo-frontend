@@ -1,14 +1,14 @@
-class PUBLIC_PAGE_CONFIG {
+class PublicPage {
   AUTH = '/auth'
 
   HOME = '/'
   TRENDING = '/trending'
   VIDEO_GAMES = '/video-games'
+  SUBSCRIPTIONS = '/my/subscriptions'
 
   MY_CHANNEL = '/my-channel'
-  SUBSCRIPTIONS = '/subscriptions'
-  HISTORY = '/history'
-  LIKED_VIDEOS = '/liked-videos'
+  HISTORY = '/my/history'
+  LIKED_VIDEOS = '/my/liked-videos'
 
   FEEDBACK = '/feedback'
 
@@ -21,7 +21,7 @@ class PUBLIC_PAGE_CONFIG {
   }
 
   PLAYLISTS(path?: string) {
-    return `/playlists${path ? `/${path}` : ''}`
+    return `/my/playlists${path ? `/${path}` : ''}`
   }
 
   SEARCH(searchTerm: string) {
@@ -29,4 +29,4 @@ class PUBLIC_PAGE_CONFIG {
   }
 }
 
-export const PAGE = new PUBLIC_PAGE_CONFIG()
+export const PAGE = new PublicPage()
