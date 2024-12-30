@@ -67,7 +67,7 @@ export const SIDEBAR_DATA: ISidebarItem[] = [
 export const MORE_SIDEBAR_DATA: ISidebarItem[] = [
   {
     icon: CircleAlert,
-    label: 'Обратная связь',
+    label: 'О нас',
     link: PAGE.FEEDBACK
   }
 ]
