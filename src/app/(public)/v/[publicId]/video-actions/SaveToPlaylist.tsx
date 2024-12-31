@@ -1,13 +1,12 @@
 import { useMutation } from '@tanstack/react-query'
 import { AnimatePresence, m } from 'framer-motion'
 import { Check, ListVideo } from 'lucide-react'
-import toast from 'react-hot-toast'
 
 import { useOutside } from '@/hooks/useOutside'
 
 import type { ISingleVideoResponse } from '@/types/video.types'
 
-import { useUserPlaylists } from '@/app/(user)/playlists/useUserPlaylists'
+import { useUserPlaylists } from '@/app/my/playlists/useUserPlaylists'
 import { playlistService } from '@/services/playlist.service'
 
 interface Props {
@@ -23,7 +22,8 @@ export function SaveToPlaylist({ video }: Props) {
     mutationKey: ['toggle video'],
     mutationFn: (playlistId: string) =>
       playlistService.toggleVideoInPlaylist(playlistId, video.id),
-    onSuccess() {
+    async onSuccess() {
+      const { toast } = await import('react-hot-toast')
       toast.success('Успешно изменено!', {
         id: 'playlist'
       })

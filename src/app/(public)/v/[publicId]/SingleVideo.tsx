@@ -2,6 +2,7 @@
 
 import cn from 'clsx'
 import { useAtomValue } from 'jotai'
+import dynamic from 'next/dynamic'
 import { useState } from 'react'
 
 import { Heading } from '@/ui/Heading'
@@ -14,11 +15,14 @@ import { isShowedSidebarAtom } from '@/store/jotai.store'
 import { formatViews } from '@/utils/format-views'
 
 import { SimilarVideos } from './SimilarVideos'
-import { Comments } from './comments/Comments'
 import { VideoDescription } from './description/VideoDescription'
 import { useUpdateViews } from './useUpdateViews'
 import { VideoActions } from './video-actions/VideoActions'
 import { VideoChannel } from './video-channel/VideoChannel'
+
+const DynamicComments = dynamic(() =>
+  import('./comments/Comments').then(mod => mod.Comments)
+)
 
 interface Props {
   video: ISingleVideoResponse
@@ -68,7 +72,7 @@ export function SingleVideo({ video }: Props) {
 
         <VideoDescription description={video.description} />
 
-        <Comments video={video} />
+        <DynamicComments video={video} />
       </div>
 
       {!!video.similarVideos.length && (

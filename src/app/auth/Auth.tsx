@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
-import ReCAPTCHA from 'react-google-recaptcha'
+import dynamic from 'next/dynamic'
+import { forwardRef, useState } from 'react'
+import type ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 
 import { Logo } from '@/components/layout/sidebar/header/Logo'
@@ -10,10 +11,18 @@ import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { Button } from '@/ui/button/Button'
 import { Field } from '@/ui/field/Field'
 
+import { SwitchAuth } from './SwitchAuth'
 import type { IAuthForm } from './auth-form.types'
 import { useAuthForm } from './useAuthForm'
 
-import styles from './captcha.module.scss'
+const DynamicRecaptcha = dynamic(() => import('./Recaptcha').then(mod => mod.Recaptcha))
+const ForwardedRefRecaptcha = forwardRef<ReCAPTCHA>((props, ref) => (
+  <DynamicRecaptcha
+    {...props}
+    forwardedRef={ref}
+  />
+))
+ForwardedRefRecaptcha.displayName = 'ForwardedRefRecaptcha'
 
 export function Auth() {
   const [isLogin, setIsLogin] = useState(true)
@@ -40,30 +49,10 @@ export function Auth() {
           <Logo />
         </div>
 
-        <div className='flex justify-center mb-6'>
-          <button
-            type='button'
-            className={`px-4 py-2 font-semibold transition-colors duration-300 ${
-              isLogin
-                ? 'text-primary border-b-2 border-primary'
-                : 'text-gray-400 hover:text-gray-300'
-            }`}
-            onClick={() => setIsLogin(true)}
-          >
-            Логин
-          </button>
-          <button
-            type='button'
-            className={`px-4 py-2 font-semibold transition-colors duration-300 ${
-              !isLogin
-                ? 'text-primary border-b-2 border-primary'
-                : 'text-gray-400 hover:text-gray-300'
-            }`}
-            onClick={() => setIsLogin(false)}
-          >
-            Регистрация
-          </button>
-        </div>
+        <SwitchAuth
+          isLogin={isLogin}
+          setIsLogin={setIsLogin}
+        />
 
         <form onSubmit={handleSubmit(onSubmit)}>
           {isLoading ? (
@@ -98,13 +87,7 @@ export function Auth() {
                 />
               )}
 
-              <ReCAPTCHA
-                ref={recaptchaRef}
-                size='normal'
-                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
-                theme='light'
-                className={styles.recaptcha}
-              />
+              <ForwardedRefRecaptcha ref={recaptchaRef} />
             </>
           )}
 

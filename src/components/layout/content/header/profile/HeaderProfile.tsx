@@ -14,8 +14,12 @@ export function HeaderProfile() {
   return isLoggedIn ? (
     <HeaderAvatar />
   ) : (
-    <LinkButton href={PAGE.AUTH}>
-      <LogIn size={20} /> Войти
+    <LinkButton
+      href={PAGE.AUTH}
+      aria-label='Войти'
+    >
+      <LogIn size={20} />
+      Войти
     </LinkButton>
   )
 }

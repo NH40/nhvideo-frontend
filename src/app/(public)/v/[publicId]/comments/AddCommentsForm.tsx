@@ -1,6 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
 import { type SubmitHandler, useForm } from 'react-hook-form'
-import toast from 'react-hot-toast'
 
 import { Textarea } from '@/ui/field/Textarea'
 
@@ -30,7 +29,8 @@ export function AddCommentsForm({ refetch, videoId }: Props) {
   const { mutate, isPending } = useMutation({
     mutationKey: ['create comment'],
     mutationFn: (data: ICommentData) => commentService.create(data),
-    onSuccess: () => {
+    async onSuccess() {
+      const { toast } = await import('react-hot-toast')
       refetch()
       reset()
       toast.success('Комментарий успешно добавлен!')

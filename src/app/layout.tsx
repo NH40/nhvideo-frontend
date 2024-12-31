@@ -15,15 +15,47 @@ const notoSans = Noto_Sans({ subsets: ['latin'] })
 export const metadata: Metadata = {
   metadataBase: new URL(APP_URL),
   title: {
-    absolute: SITE_NAME,
+    absolute: `${SITE_NAME}`,
     template: `%s | ${SITE_NAME}`
   },
   icons: {
-    icon: '/logo.png'
+    icon: '/images/logo.svg',
+    shortcut: '/images/logo.svg',
+    apple: '/images/256.png',
+    other: {
+      rel: 'touch-icons',
+      url: '/images/256.png',
+      sizes: '256x256',
+      type: 'image/png'
+    }
+  },
+  description:
+    'Платформа созданная для размещения видео NH для замены полноценной замены YouTube',
+
+  openGraph: {
+    type: 'website',
+    siteName: 'localhost',
+    emails: [`nevedomyj4@gmail.com`],
+    images: [
+      {
+        url: '/images/op.png',
+        width: 1918,
+        height: 1036,
+        alt: `${SITE_NAME}`
+      }
+    ]
   },
 
-  description:
-    'Платформа созданная для размещения видео NH для замены полноценной замены YouTube'
+  // metadataBase: new URL(APP_URL),
+  applicationName: `${SITE_NAME}`,
+  authors: {
+    name: 'NH Team'
+  },
+  manifest: '/manifest.json',
+  publisher: 'NH Team',
+  formatDetection: {
+    telephone: false
+  }
 }
 
 export default function RootLayout({
