@@ -38,7 +38,7 @@ export const useSettings = () => {
       email: profile?.email,
       name: profile?.name
     })
-  }, [isSuccess, profile])
+  }, [isSuccess, profile, form])
 
   const onSubmit: SubmitHandler<ISettingsData> = data => {
     mutate(data)

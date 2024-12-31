@@ -42,7 +42,7 @@ export function EditVideoForm() {
       tags: initialVideo.tags.map(tag => tag.name),
       videoFileName: initialVideo.videoFileName
     })
-  }, [isSuccess, data])
+  }, [isSuccess, data, form])
 
   const queryClient = useQueryClient()
 

@@ -14,6 +14,7 @@ import { VideoFormRightSide } from './VideoFormRightSide'
 
 interface Props {
   isPending?: boolean
+  isReadyToPublish?: boolean
   form: UseFormReturn<IVideoFormData, any, undefined>
 }
 
@@ -24,7 +25,8 @@ export function VideoForm({
     register,
     watch
   },
-  isPending
+  isPending,
+  isReadyToPublish
 }: Props) {
   return (
     <div className='grid-cols-[2.5fr_1fr] grid gap-10'>
