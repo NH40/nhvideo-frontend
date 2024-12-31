@@ -42,7 +42,7 @@ export function EditVideoForm() {
       tags: initialVideo.tags.map(tag => tag.name),
       videoFileName: initialVideo.videoFileName
     })
-  }, [isSuccess, data, form])
+  }, [isSuccess, data])
 
   const queryClient = useQueryClient()
 
@@ -54,12 +54,12 @@ export function EditVideoForm() {
         queryKey: ['studioVideoList']
       })
       const { toast } = await import('react-hot-toast')
-      toast.success('Видео успешно обновлено!')
+      toast.success('Video successfully updated!')
       router.push(STUDIO_PAGE.HOME)
     },
     async onError() {
       const { toast } = await import('react-hot-toast')
-      toast.error('Видео обновления имеет ошибку!')
+      toast.error('Video updating has error!')
     }
   })
 
@@ -73,7 +73,7 @@ export function EditVideoForm() {
         Icon={Edit}
         isPageHeading
       >
-        Редактирование видео
+        Редактировать видео
       </Heading>
 
       <form onSubmit={form.handleSubmit(onSubmit)}>
