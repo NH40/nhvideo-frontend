@@ -1,24 +1,9 @@
-'use client'
+import type { TPageIdProp } from '@/types/page.types'
 
-import dynamic from 'next/dynamic'
+import { SinglePl } from './SinglePl'
 
-import { SkeletonLoader } from '@/ui/SkeletonLoader'
+export default async function Page({ params }: TPageIdProp) {
+  const id = (await params).id
 
-const DynamicSinglePlaylist = dynamic(
-  () => import('./SinglePlaylist').then(mod => mod.SinglePlaylist),
-  {
-    ssr: false,
-    loading: () => (
-      <div className='grid grid-cols-6 gap-6'>
-        <SkeletonLoader
-          count={3}
-          className='h-28 rounded-md mb-6'
-        />
-      </div>
-    )
-  }
-)
-
-export default function Page() {
-  return <DynamicSinglePlaylist />
+  return <SinglePl id={id} />
 }
