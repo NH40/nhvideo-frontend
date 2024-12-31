@@ -7,7 +7,7 @@ import { UploadField } from '@/ui/upload-field/UploadField'
 
 import type { IVideoFormData } from '@/types/studio-video.types'
 
-import { stripHtmlWithBreak } from '@/utils/strip-html'
+import { stripHtml } from '@/utils/strip-html'
 
 import { UploadSkeleton } from './UploadSkeleton'
 import { VideoFormRightSide } from './VideoFormRightSide'
@@ -49,7 +49,7 @@ export function VideoForm({
               render={({ field: { onChange, value }, fieldState: { error } }) => (
                 <Textarea
                   label='Описание'
-                  value={stripHtmlWithBreak(value || '')}
+                  value={stripHtml(value || '')}
                   onChange={e => onChange(e.target.value)}
                   error={error?.message}
                   placeholder='Введите описание:'
